@@ -20,13 +20,17 @@ Ce fichier consigne les règles, apprentissages et historique pour accélérer l
 | article-guestlucky-site.html | guestlucky.com | logiciel conciergerie airbnb | inconnus |
 | article-caution.html | LCD | caution conciergerie airbnb | inconnus |
 | article-nouveautes-airbnb-2026.html | LCD | nouveautés airbnb 2026 | Icon grid 6, Quote card, Comparatif 2 col, Thermomètre seuils, Stack vertical numéroté |
+| article-loi-le-meur-conciergerie.html | LCD | loi le meur conciergerie | Avant/Après split, Stat block 4 amendes, Checklist dark navy, Timeline 6 étapes, CTAs duo |
+| article-booking-vs-airbnb.html | LCD | booking vs airbnb | Bar chart commissions empilées, Persona compare 2 cards brandées, Algorithme boîte noire vs tableau de bord, Tableau leviers Booking, Architecture multicanal hub |
 
 ## 3. Règles SEO Yoast à appliquer DÈS LE 1ER JET (apprentissages durs)
 
-### 3.1 Sous-titres avec expression clé (CRITIQUE)
+### 3.1 Sous-titres avec expression clé (CRITIQUE - fourchette 30-75%)
 - **≥30% des H2/H3** doivent contenir l'expression clé exacte
-- Sur ~8 H2 + ~20 H3 = ~29 sous-titres → viser **9-11 sous-titres avec expression clé minimum**
+- **MAIS PAS PLUS DE 75%** sinon Yoast détecte une sur-optimisation et passe au rouge
+- Sur ~8 H2 + ~20 H3 = ~29 sous-titres → viser **14-18 sous-titres avec expression clé** (50-65% zone safe)
 - Privilégier le placement naturel : « Les X clés des [expression] », « Comment fonctionne [expression] », « Exploiter [expression] sans... »
+- **APPRENTISSAGE** : Ne pas mettre l'expression clé dans TOUS les H2 + TOUS les H3. Garder ~30-40% des H3 sans le mot-clé, avec des reformulations contextuelles.
 
 ### 3.2 Densité expression clé
 - **Minimum 10 occurrences exactes** de l'expression clé pour ~3000 mots
@@ -43,10 +47,13 @@ Ce fichier consigne les règles, apprentissages et historique pour accélérer l
 - Sinon Yoast voit toute la FAQ comme UNE section >300 mots → erreur "Répartition sous-titres"
 - Split FAQ avec H3 toutes les ~2-3 questions
 
-### 3.5 Mots de transition
+### 3.5 Mots de transition (ATTENTION : Yoast est strict)
 - **>30% des phrases** doivent commencer par un mot de transition
 - Yoast vise environ 1 phrase sur 3
-- Liste à parsemer systématiquement : Tout d'abord, Ensuite, De plus, Par ailleurs, Cependant, Toutefois, Concrètement, Ainsi, Donc, Enfin, En revanche, Surtout, Précisément, De ce fait, En effet, Pourtant, Heureusement, Avant tout, Au final, Quant aux, En pratique, Notamment, Par exemple, D'ailleurs, En outre, Désormais, À l'inverse, Effectivement
+- **PIÈGE APPRENTISSAGE** : Yoast français a une liste BEAUCOUP plus restreinte que je l'imagine. Mon scanner peut trouver 50%+ alors que Yoast en trouve 25-29%. Donc viser **40-50% par mon comptage** pour assurer 30%+ chez Yoast.
+- Liste à parsemer systématiquement (Yoast-compliant) : Tout d'abord, Ensuite, De plus, Par ailleurs, Cependant, Toutefois, Concrètement, Ainsi, Donc, Enfin, En revanche, Surtout, Précisément, De ce fait, En effet, Pourtant, Heureusement, Avant tout, Au final, Quant aux, En pratique, Notamment, Par exemple, D'ailleurs, En outre, Désormais, À l'inverse, Effectivement
+- **Transitions NON reconnues par Yoast (à éviter de compter)** : Alors, Mais, Voici, Imaginons, Pour commencer, En clair, Sinon, Là, Au contraire, D'une part / D'autre part, Dans ce cas, Au final, Bref
+- Règle d'or : sur ~180 phrases, viser **90+ phrases avec une vraie transition Yoast-officielle** (ouvertures qui démarrent par les mots de la liste ci-dessus uniquement)
 
 ### 3.6 Lisibilité
 - Phrases <20 mots majoritairement (<25% de phrases longues)
@@ -172,6 +179,11 @@ CSS du bloc intro :
 - **Self-contained** : chaque visuel a son propre `<style>` juste avant le markup
 - **Responsive** avec media queries à 540px (et 1320px pour guestlucky.com sidebar)
 - Police Google Fonts Montserrat 400-800
+- **Mot-clé dans le TOUT 1er paragraphe (bandeau lcd-update INCLUS)** : Yoast scrute ce 1er `<p>`, donc l'expression clé doit y figurer
+- **2-3 liens internes vers articles LCD existants** dès le 1er jet, sinon Yoast SEO rouge "Maillage interne"
+- **Phrases en voix active uniquement** : bannir « peut être X-é », « est/sont + participe », « X envoyé par Y » même dans les visuels (cards, checklist, timeline)
+- **Sous-titres avec mot-clé : viser 50-65%**, jamais >75% (sur-optimisation détectée par Yoast)
+- **Mots de transition Yoast-strict** : viser 40-50% au comptage perso pour assurer 30%+ chez Yoast
 
 ## 7. Bibliothèque de patterns visuels (ROTATION OBLIGATOIRE)
 
