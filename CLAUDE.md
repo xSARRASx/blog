@@ -181,6 +181,8 @@ CSS du bloc intro :
 - Police Google Fonts Montserrat 400-800
 - **Mot-clé dans le TOUT 1er paragraphe (bandeau lcd-update INCLUS)** : Yoast scrute ce 1er `<p>`, donc l'expression clé doit y figurer
 - **2-3 liens internes vers articles LCD existants** dès le 1er jet, sinon Yoast SEO rouge "Maillage interne"
+- **Liens internes : URL LCD COMPLÈTE obligatoire** (jamais d'ancre `#article-XXX` qui n'est pas comptée par Yoast). Utiliser le pattern `https://www.locationcourteduree.fr/YYYY/MM/DD/slug/`
+- **Liens internes SANS `target="_blank" rel="noopener"`** : ces attributs font passer le lien en EXTERNE pour Yoast → erreur Maillage rouge. Garder `target="_blank"` uniquement pour les vrais liens externes (Guestlucky, sites tiers)
 - **Phrases en voix active uniquement** : bannir « peut être X-é », « est/sont + participe », « X envoyé par Y » même dans les visuels (cards, checklist, timeline)
 - **Sous-titres avec mot-clé : viser 50-65%**, jamais >75% (sur-optimisation détectée par Yoast)
 - **Mots de transition Yoast-strict** : viser 40-50% au comptage perso pour assurer 30%+ chez Yoast
