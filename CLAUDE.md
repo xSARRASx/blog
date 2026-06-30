@@ -242,6 +242,8 @@ CSS du bloc intro :
      - Sébastien dit en dictée vocale "Raoul. Guite" pour "Raw GitHub", c'est la même chose
    - Onglets à ouvrir AVANT de lancer l'extension Claude : Studio d'images IA + WordPress wp-admin + Raw GitHub
    - L'extension Claude pour Chrome travaille mieux quand on lui livre **un BLOC à la fois** plutôt qu'un mega-prompt unique
+   - **PIÈGE EXTENSION CHROME** : l'extension ne vide PAS automatiquement les champs avant de coller, ce qui crée des doublons. Toujours préciser dans le prompt : "VIDE le champ avec Cmd+A + Delete avant de coller". Particulièrement critique pour le Titre SEO Yoast qui contient des variables par défaut (Titre, Séparateur, Titre du site).
+   - **Règle d'or à intégrer dans tous les mega-prompts** : Avant chaque collage dans un champ, l'extension doit (1) cliquer dans le champ, (2) Cmd+A, (3) Delete, (4) Cmd+V
 
 6. Si Yoast affiche des erreurs après publication → correction immédiate du HTML + nouveau push
 
