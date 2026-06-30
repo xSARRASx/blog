@@ -230,6 +230,19 @@ CSS du bloc intro :
 
 5. Commit + push systématique sur `claude/seo-article-production-gw6zA` à chaque livraison/correction
 
+6. **WORKFLOW PUBLICATION WORDPRESS - SPÉCIFICITÉS LCD (CRITIQUES)** :
+   - Tous les articles LCD sont publiés via **ELEMENTOR**, jamais en Gutenberg direct
+   - Le HTML doit être collé dans un **widget HTML Elementor** (icône `</>`), pas dans le widget "Mise en évidence du code"
+   - Workflow : Modifier avec Elementor → recherche widget "HTML" → glisser-déposer dans zone centrale → coller HTML dans champ "Code HTML" → Publier dans Elementor → Quitter vers le tableau de bord
+   - **Champ Extrait** = à remplir manuellement via "Modifier l'extrait" en sidebar droite, sinon WordPress affiche du texte parasite (interface d'admin) sur la page blog
+   - **Si Sébastien utilise l'extension Claude pour Chrome** pour automatiser, lui livrer les blocs dans le format **BLOCS COPIER-COLLER ULTRA PRÉCIS** avec :
+     - Mention explicite "ELEMENTOR" et "widget HTML"
+     - Procédure explicite pour basculer entre onglets (WordPress / Studio d'images IA / Raw GitHub)
+     - Le Raw GitHub doit être ouvert dans un onglet séparé AVANT de lancer le mega-bloc
+     - Sébastien dit en dictée vocale "Raoul. Guite" pour "Raw GitHub", c'est la même chose
+   - Onglets à ouvrir AVANT de lancer l'extension Claude : Studio d'images IA + WordPress wp-admin + Raw GitHub
+   - L'extension Claude pour Chrome travaille mieux quand on lui livre **un BLOC à la fois** plutôt qu'un mega-prompt unique
+
 6. Si Yoast affiche des erreurs après publication → correction immédiate du HTML + nouveau push
 
 ## 9. Erreurs Yoast récurrentes et leurs fixes
