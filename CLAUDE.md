@@ -244,6 +244,7 @@ CSS du bloc intro :
    - L'extension Claude pour Chrome travaille mieux quand on lui livre **un BLOC à la fois** plutôt qu'un mega-prompt unique
    - **PIÈGE EXTENSION CHROME** : l'extension ne vide PAS automatiquement les champs avant de coller, ce qui crée des doublons. Toujours préciser dans le prompt : "VIDE le champ avec Cmd+A + Delete avant de coller". Particulièrement critique pour le Titre SEO Yoast qui contient des variables par défaut (Titre, Séparateur, Titre du site).
    - **Règle d'or à intégrer dans tous les mega-prompts** : Avant chaque collage dans un champ, l'extension doit (1) cliquer dans le champ, (2) Cmd+A, (3) Delete, (4) Cmd+V
+   - **RÈGLE CRITIQUE : SEO AVANT PUBLICATION** : dans tous les mega-prompts, l'extension doit sauvegarder l'article en BROUILLON (pas Publier) après l'insertion HTML dans Elementor, puis faire TOUT le SEO (Yoast, image mise en avant, extrait, catégories), et SEULEMENT à la dernière étape cliquer sur PUBLIER. Ne jamais publier un article avant que Yoast et l'image soient configurés.
 
 6. Si Yoast affiche des erreurs après publication → correction immédiate du HTML + nouveau push
 
