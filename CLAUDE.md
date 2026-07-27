@@ -29,6 +29,8 @@ Ce fichier consigne les règles, apprentissages et historique pour accélérer l
 | article-commission-airbnb-2026.html | LCD | commission airbnb 2026 | Avant/Après 13 octobre, Formule mathématique box, Tableau plafonds, Comparatif micro vs réel, CTAs duo |
 | article-plus-de-reservations-airbnb.html | LCD | plus de reservations airbnb | Funnel algorithme 5 étapes, Tableau 10 techniques badges impact, Comparateur tarif rouge vs vert, CTAs duo |
 | article-responsabilite-conciergerie-airbnb.html | LCD | responsabilité conciergerie airbnb | Double carte sanction miroir navy/orange, Quote card verdict tribunal, Stack 2 étages sanctions, Comparatif carte G autorisé/interdit navy vs bordure orange, Checklist 6 points numérotée claire, Grille 3 briques bordure top orange, CTAs duo |
+| article-assurance-airbnb-lucky-cover.html | LCD | assurance airbnb | Stat block 3 chiffres cards pleines navy/orange, Icon grid 6 garanties numérotées, Tableau récap 4 protections (th navy + ligne accent), Process flow 4 étapes flèches, CTAs duo |
+| article-caution-airbnb.html | LCD | caution airbnb (REFONTE de caution-conciergerie-airbnb, slug conservé) | Visuels d'origine conservés : stat block 3 chiffres cnst, avant/après Stripe cnab, checklist, FAQ faqcn |
 
 ## 3. Règles SEO Yoast à appliquer DÈS LE 1ER JET (apprentissages durs)
 
@@ -70,7 +72,12 @@ Ce fichier consigne les règles, apprentissages et historique pour accélérer l
 - Aucune phrase consécutive ne démarre pareil
 - Vouvoiement systématique
 
-### 3.7 Alt image WordPress
+### 3.7 Choix du mot-clé (conseil Camille, 27/07/2026)
+- **Privilégier les mots-clés courts à fort volume** (2 mots : « caution airbnb », « assurance airbnb ») plutôt que la longue traîne à 3 mots (« caution conciergerie airbnb ») quand le contenu le permet
+- **Toujours terminer un article par le pont produit** : une phrase qui présente l'option Guestlucky/Lucky Cover + un lien vers l'article dédié (call to action de fin d'article systématique)
+- Lucky Cover = l'assurance voyageurs intégrée à Guestlucky, propulsée par Meetch (meetch.io) : 50 000 €/an, franchise 30 €, nuisibles 10 000 €/an, déclaration 15 j, remboursement 48 h
+
+### 3.8 Alt image WordPress
 - L'alt doit contenir l'expression clé exacte
 - À régler DANS WordPress (Médias → image → champ "Texte alternatif")
 - Pas dans le HTML, donc à rappeler explicitement à Sébastien à chaque livraison
