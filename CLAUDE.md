@@ -22,6 +22,13 @@ Ce fichier consigne les règles, apprentissages et historique pour accélérer l
 | article-nouveautes-airbnb-2026.html | LCD | nouveautés airbnb 2026 | Icon grid 6, Quote card, Comparatif 2 col, Thermomètre seuils, Stack vertical numéroté |
 | article-loi-le-meur-conciergerie.html | LCD | loi le meur conciergerie | Avant/Après split, Stat block 4 amendes, Checklist dark navy, Timeline 6 étapes, CTAs duo |
 | article-booking-vs-airbnb.html | LCD | booking vs airbnb | Bar chart commissions empilées, Persona compare 2 cards brandées, Algorithme boîte noire vs tableau de bord, Tableau leviers Booking, Architecture multicanal hub |
+| article-liberte-financiere-conciergerie.html | LCD | liberté financière conciergerie | Stat block 3 chiffres, Opposition rouge chaos vs vert zen, Process flow horizontal 3 étapes, Stack alterné clair/sombre 5 principes, CTAs duo |
+| article-pricing-dynamique-airbnb.html | LCD | pricing dynamique airbnb | Dashboard mockup KPI + bar chart, Comparatif 4 outils, Calendar heatmap 12 mois, Stat block 3 KPI accent top, Funnel 4 niveaux dégressif |
+| article-trouver-clients-conciergerie.html | LCD | trouver clients conciergerie | Ranking 5 méthodes barres progressives, Box audit chiffré navy, Checklist SEO local 4 leviers icônes, Grille écosystème 6 métiers, CTAs duo |
+| article-acheter-immobilier-sans-pret-bancaire.html | LCD | acheter immobilier sans prêt bancaire | Grille 6 profils vendeurs, Box exemple chiffré navy, Architecture 3 étages, Frise démembrement 21 ans, Tableau comparatif 4 solutions |
+| article-commission-airbnb-2026.html | LCD | commission airbnb 2026 | Avant/Après 13 octobre, Formule mathématique box, Tableau plafonds, Comparatif micro vs réel, CTAs duo |
+| article-plus-de-reservations-airbnb.html | LCD | plus de reservations airbnb | Funnel algorithme 5 étapes, Tableau 10 techniques badges impact, Comparateur tarif rouge vs vert, CTAs duo |
+| article-responsabilite-conciergerie-airbnb.html | LCD | responsabilité conciergerie airbnb | Double carte sanction miroir navy/orange, Quote card verdict tribunal, Stack 2 étages sanctions, Comparatif carte G autorisé/interdit navy vs bordure orange, Checklist 6 points numérotée claire, Grille 3 briques bordure top orange, CTAs duo |
 
 ## 3. Règles SEO Yoast à appliquer DÈS LE 1ER JET (apprentissages durs)
 
