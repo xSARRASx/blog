@@ -11,6 +11,21 @@ Ce fichier consigne les règles, apprentissages et historique pour accélérer l
 - **Repo GitHub** : `xSARRASx/blog`
 - **Branche active** : `claude/seo-article-production-gw6zA`
 
+## 1bis. ROBOT BLOG v2 : publication automatique par API (depuis le 31/07/2026)
+
+- **Interlocuteur** : Martin (auteur WordPress `martin`). Les vidéos sont celles de son père, Sébastien More, chaîne https://www.youtube.com/@moresebastien
+- **Rythme chaîne : 2 vidéos/semaine** : dimanche + mercredi 18h
+- **2 Routines actives** (self-bind dans la conversation Robot BLOG) :
+  - Lundi 8h Paris (`trig_018Re37nCRvKAFkHiXmcCbA3`, cron `0 6 * * 1`) : article sur la vidéo du dimanche
+  - Jeudi 8h Paris (`trig_01879X2BCDSn7bEjgivroJf9`, cron `0 6 * * 4`) : CONDITIONNEL, article sur la vidéo du mercredi ; si aucune nouvelle vidéo → une ligne dans la conversation, zéro dépense
+- **RÈGLE TITRES** : ne JAMAIS juger une vidéo par son titre (YouTube auto-traduit les titres en anglais, ex : « €220,000: The Court Ruling... » pour une vidéo 100 % française). Seule la transcription française fait foi.
+- **ANTI-DOUBLON DURCI** : verdict « déjà traitée » basé sur le RÉSULTAT FINAL = ID dans `.robot-blog/traite.json` ET article réellement existant (fichier repo + article trouvable sur le site via `wp-json/wp/v2/posts?search=<slug>`, brouillons inclus avec auth). Si référence morte → retraiter.
+- **PUBLICATION API WordPress** : l'API REST de locationcourteduree.fr est ouverte, auth par mot de passe d'application (compte `martin`). Identifiants attendus en VARIABLES D'ENVIRONNEMENT : `WP_APP_USER` + `WP_APP_PASSWORD` (JAMAIS dans le repo, JAMAIS dans le chat). Si absentes → fallback livraison classique 8 blocs + mega-bloc extension Chrome.
+- **PHASE BROUILLON (en cours)** : toujours `status=draft`, JAMAIS publish. Martin vérifie et clique Publier. Le passage en publication directe se fera uniquement sur instruction explicite de Martin.
+- **IMAGES : génération par API Gemini** (clé `GEMINI_API_KEY` déjà en variable d'environnement, testée OK le 31/07) : modèle `gemini-2.5-flash-image`, endpoint `generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent`, header `x-goog-api-key`, réponse inlineData base64 → `<slug>.png`. Fallback : miniature YouTube (`yt-dlp --write-thumbnail`).
+- **Champs Yoast par API** : tenter meta `_yoast_wpseo_focuskw` / `_yoast_wpseo_title` / `_yoast_wpseo_metadesc` au POST, VÉRIFIER la prise en compte en relisant le post ; si ignorés, le signaler dans le récap (Martin les colle à la main avant de publier).
+- **Rendu** : les anciens articles sont en widget HTML Elementor ; les articles API partent en contenu classique (HTML self-contained). Vérifier le rendu du 1er brouillon dans le thème avant de généraliser.
+
 ## 2. Articles déjà publiés (NE PAS répéter les patterns visuels)
 
 | Fichier | Site | Mot-clé | Patterns visuels utilisés |
