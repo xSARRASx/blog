@@ -1,5 +1,15 @@
 {
   "videos_traitees": [
-    {"id": "YiAaGhoimhA", "date_traitement": "2026-07-27", "article": "article-responsabilite-conciergerie-airbnb.html"}
+    {
+      "id": "YiAaGhoimhA",
+      "date_traitement": "2026-07-27",
+      "article": "article-responsabilite-conciergerie-airbnb.html"
+    },
+    {
+      "id": "sICVVkMpSl4",
+      "date_traitement": "2026-07-31",
+      "article": "article-airbnb-en-copropriete.html",
+      "wp_post_id": 10358
+    }
   ]
 }

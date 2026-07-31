@@ -48,6 +48,7 @@ Ce fichier consigne les règles, apprentissages et historique pour accélérer l
 | article-responsabilite-conciergerie-airbnb.html | LCD | responsabilité conciergerie airbnb | Double carte sanction miroir navy/orange, Quote card verdict tribunal, Stack 2 étages sanctions, Comparatif carte G autorisé/interdit navy vs bordure orange, Checklist 6 points numérotée claire, Grille 3 briques bordure top orange, CTAs duo |
 | article-assurance-airbnb-lucky-cover.html | LCD | assurance airbnb | Stat block 3 chiffres cards pleines navy/orange, Icon grid 6 garanties numérotées, Tableau récap 4 protections (th navy + ligne accent), Process flow 4 étapes flèches, CTAs duo |
 | article-caution-airbnb.html | LCD | caution airbnb (REFONTE de caution-conciergerie-airbnb, slug conservé) | Visuels d'origine conservés : stat block 3 chiffres cnst, avant/après Stripe cnab, checklist, FAQ faqcn |
+| article-airbnb-en-copropriete.html | LCD | airbnb en copropriété (1er article publié en brouillon par API, post 10358) | Avant/Après unanimité vs deux tiers (dashed vs navy), Stack 3 conditions numérotées (3e en navy accent), Quote card Cour de cassation, Comparatif civil navy vs commercial bordure orange, Tabs interactives investisseur/conciergerie (PREMIÈRE utilisation), CTAs duo |
 
 ## 3. Règles SEO Yoast à appliquer DÈS LE 1ER JET (apprentissages durs)
 
