@@ -51,6 +51,7 @@ Ce fichier consigne les règles, apprentissages et historique pour accélérer l
 | article-assurance-airbnb-lucky-cover.html | LCD | assurance airbnb | Stat block 3 chiffres cards pleines navy/orange, Icon grid 6 garanties numérotées, Tableau récap 4 protections (th navy + ligne accent), Process flow 4 étapes flèches, CTAs duo |
 | article-caution-airbnb.html | LCD | caution airbnb (REFONTE de caution-conciergerie-airbnb, slug conservé) | Visuels d'origine conservés : stat block 3 chiffres cnst, avant/après Stripe cnab, checklist, FAQ faqcn |
 | article-airbnb-en-copropriete.html | LCD | airbnb en copropriété (1er article publié en brouillon par API, post 10358) | Avant/Après unanimité vs deux tiers (dashed vs navy), Stack 3 conditions numérotées (3e en navy accent), Quote card Cour de cassation, Comparatif civil navy vs commercial bordure orange, Tabs interactives investisseur/conciergerie (PREMIÈRE utilisation), CTAs duo |
+| article-parler-d-argent.html | LCD (Dev perso) | parler d'argent (1er article 100% automatique publié en direct par API, post 10361) | Matrice 2x2 des 4 réactions (dégradé clair vers navy), Split iceberg ce qu'ils voient / ne voient pas (ligne de flottaison orange), Cercles concentriques 3 niveaux de confidence, Tableau 7 silences / 7 protections, CTAs duo |
 
 ## 3. Règles SEO Yoast à appliquer DÈS LE 1ER JET (apprentissages durs)
 
