@@ -31,6 +31,26 @@ Ce fichier consigne les règles, apprentissages et historique pour accélérer l
 - **Intégrité contenu (testé 31/07/2026)** : `<style>` et `<script>` sont préservés dans content.raw (compte admin = unfiltered_html OK). Auth testée OK (martin, administrator). Upload media + alt_text OK. Catégories dispo : Location courte durée=4, Conciergerie=88, Sous-location=62, Investissement locatif=53, Immobilier=52, Fiscalité=90.
 - **Rendu** : les anciens articles sont en widget HTML Elementor ; les articles API partent en contenu classique (HTML self-contained). Vérifier le rendu du 1er brouillon dans le thème avant de généraliser (brouillon test 10355 créé le 31/07 pour validation visuelle par Martin).
 
+## 1ter. MESSAGES VOCAUX DE MARTIN : transcription Whisper (procédure validée, 11/08/2026)
+
+Martin envoie souvent des messages vocaux. À transcrire systématiquement avant d'y répondre.
+
+1. **Installation** (le conteneur repart de zéro à chaque session, donc À REFAIRE à chaque fois, ~40 s) :
+   `pip install --quiet faster-whisper`
+2. **Transcription** :
+   ```
+   python3 -c "
+   from faster_whisper import WhisperModel
+   m = WhisperModel('small', device='cpu', compute_type='int8')
+   seg, _ = m.transcribe('LE_FICHIER.opus', language='fr', vad_filter=True)
+   print(' '.join(s.text for s in seg))"
+   ```
+- **Formats lus directement** : .opus/.ogg (vocaux WhatsApp), m4a, mp3, wav, mp4. Le décodage passe par PyAV : **ffmpeg n'est pas installé et n'est pas nécessaire**.
+- **`vad_filter=True` OBLIGATOIRE** : sans lui, Whisper hallucine du texte sur les silences (typiquement « Sous-titres réalisés par la communauté d'Amara.org »).
+- **Audio difficile ou jargon métier** : relancer avec `'medium'` au lieu de `'small'` (plus lent, nettement plus fidèle).
+- **Noms propres et termes techniques écorchés** (GuestLucky, Beds24, noms de fonctionnalités, Lucky Cover, Meetch, Déclaloc...) : TOUJOURS relire la transcription, corriger, et **signaler à Martin ce qui a été rétabli**.
+- Script tout prêt dans le repo `CARROUSSEL-` : `pipeline/transcrire_vocal.py`, usage `python3 transcrire_vocal.py vocal.ogg medium` (non disponible depuis le repo blog, mais même recette).
+
 ## 2. Articles déjà publiés (NE PAS répéter les patterns visuels)
 
 | Fichier | Site | Mot-clé | Patterns visuels utilisés |
