@@ -76,6 +76,7 @@ Martin envoie souvent des messages vocaux. À transcrire systématiquement avant
 | article-parler-d-argent.html | LCD (Dev perso) | parler d'argent (1er article 100% automatique publié en direct par API, post 10361) | Matrice 2x2 des 4 réactions (dégradé clair vers navy), Split iceberg ce qu'ils voient / ne voient pas (ligne de flottaison orange), Cercles concentriques 3 niveaux de confidence, Tableau 7 silences / 7 protections, CTAs duo |
 | article-location-meublee-septembre-2026.html | LCD | location meublée (post 10363) | Calendrier vertical 3 jalons (pastilles dates orange/navy/gris + statut), Jauge barres avant/après plafonnement amortissement, Arbre de décision 3 questions oui/non (PREMIÈRE utilisation), Vrai/Faux 4 idées reçues badges, CTAs duo |
 | article-location-saisonniere-copropriete-jugement.html | LCD | location saisonnière (post 10365) | Scoreboard verdict tribunal navy (débouté vs gagne, VS central), Grille 4 prestations 261D + jauge de bascule civil/commercial, Stack 5 boucliers icônes bouclier navy, Encart délai 2 mois orange plein, CTAs duo |
+| article-basse-saison-airbnb.html | LCD | basse saison (post 10367) | Escalier de remises 3 paliers décalés (navy/gris/orange en retrait progressif), Duel de scénarios chiffrés (dashed gris vs navy plein), Switch annonce été/hiver avec tags équipements, Fiche produit bail mobilité (header navy + bandeau orange), CTAs duo |
 
 ## 3. Règles SEO Yoast à appliquer DÈS LE 1ER JET (apprentissages durs)
 
