@@ -78,6 +78,7 @@ Martin envoie souvent des messages vocaux. À transcrire systématiquement avant
 | article-location-meublee-septembre-2026.html | LCD | location meublée (post 10363) | Calendrier vertical 3 jalons (pastilles dates orange/navy/gris + statut), Jauge barres avant/après plafonnement amortissement, Arbre de décision 3 questions oui/non (PREMIÈRE utilisation), Vrai/Faux 4 idées reçues badges, CTAs duo |
 | article-location-saisonniere-copropriete-jugement.html | LCD | location saisonnière (post 10365) | Scoreboard verdict tribunal navy (débouté vs gagne, VS central), Grille 4 prestations 261D + jauge de bascule civil/commercial, Stack 5 boucliers icônes bouclier navy, Encart délai 2 mois orange plein, CTAs duo |
 | article-basse-saison-airbnb.html | LCD | basse saison (post 10367) | Escalier de remises 3 paliers décalés (navy/gris/orange en retrait progressif), Duel de scénarios chiffrés (dashed gris vs navy plein), Switch annonce été/hiver avec tags équipements, Fiche produit bail mobilité (header navy + bandeau orange), CTAs duo |
+| article-liasse-fiscale-lmnp.html | LCD | liasse fiscale (post 10369) | Arborescence de formulaires 2031 vers annexes 2033 avec badges d'ordre de remplissage (PREMIÈRE utilisation), Meuble à 3 tiroirs de documents sur fond navy, Barre segmentée des composants amortissables + durées, Balance à deux plateaux visant le résultat zéro, Mockup de formulaire 2042-C-PRO avec case surlignée orange, CTAs duo |
 
 ## 3. Règles SEO Yoast à appliquer DÈS LE 1ER JET (apprentissages durs)
 
