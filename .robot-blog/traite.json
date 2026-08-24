@@ -41,6 +41,13 @@
       "article": "article-liasse-fiscale-lmnp.html",
       "wp_post_id": 10369,
       "note": "rattrapage vidéo ancienne, transcription fournie par Martin (quota YouTube actif)"
+    },
+    {
+      "id": "A9IY0pA__rY",
+      "date_traitement": "2026-08-24",
+      "article": "article-conciergerie-rentable.html",
+      "wp_post_id": 10371,
+      "note": "rattrapage vidéo ancienne, transcription récupérée après déblocage yt-dlp (--js-runtimes node)"
     }
   ]
 }
