@@ -48,6 +48,13 @@
       "article": "article-conciergerie-rentable.html",
       "wp_post_id": 10371,
       "note": "rattrapage vidéo ancienne, transcription récupérée après déblocage yt-dlp (--js-runtimes node)"
+    },
+    {
+      "id": "h0GZh51rtCk",
+      "date_traitement": "2026-08-27",
+      "article": "article-taxe-fonciere.html",
+      "wp_post_id": 10373,
+      "note": "transcription collée par Martin (quota YouTube actif ce jour-là)"
     }
   ]
 }
