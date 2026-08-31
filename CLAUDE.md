@@ -163,6 +163,37 @@ CSS du bloc intro :
 }
 ```
 
+### WRAPPER OBLIGATOIRE `.lcd-wrap` (erreur commise les 21-31/08/2026, 4 articles à corriger a posteriori)
+
+**TOUT article LCD doit être enveloppé dans `<div class="lcd-wrap">...</div>`**, avec le bloc `<style>` de typographie AVANT. Sans lui, l'article hérite du thème WordPress : les H2 sortent en navy au lieu d'orange, la colonne prend toute la largeur, et le rendu n'a plus rien à voir avec les autres articles du site. Martin le voit immédiatement.
+
+En-tête exact à recopier en tête de chaque article (référence : post 10361) :
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .lcd-wrap { font-family: 'Montserrat', sans-serif !important; max-width: 760px; margin: 0 auto; padding: 60px 48px; background: #ffffff; color: #2a3548; font-size: 17px; line-height: 1.7; }
+  .lcd-wrap h2 { color: #FF5101; font-weight: 800; font-size: 30px; line-height: 1.25; margin: 56px 0 20px; }
+  .lcd-wrap h3 { color: #182745; font-weight: 700; font-size: 22px; line-height: 1.35; margin: 36px 0 14px; }
+  .lcd-wrap p { margin: 0 0 18px; }
+  .lcd-wrap a { color: #FF5101; font-weight: 600; text-decoration: none; }
+  .lcd-wrap a:hover { text-decoration: underline; }
+  .lcd-wrap strong { color: #182745; font-weight: 700; }
+  .lcd-wrap ul { padding-left: 22px; margin: 0 0 20px; }
+  .lcd-wrap ul li { margin-bottom: 10px; }
+  /* + .lcd-intro-box, .lcd-update, .lcd-video : voir post 10361 */
+  @media (max-width: 540px) {
+    .lcd-wrap { padding: 40px 22px; font-size: 16px; }
+    .lcd-wrap h2 { font-size: 25px; margin-top: 44px; }
+    .lcd-wrap h3 { font-size: 20px; margin-top: 28px; }
+  }
+</style>
+<div class="lcd-wrap">
+```
+Et `</div>` en toute fin de fichier.
+
+**CONTRÔLE À AJOUTER AVANT CHAQUE PUBLICATION** : `grep -c 'class="lcd-wrap"'` sur le fichier doit renvoyer 1. Si 0, l'article n'est pas publiable.
+
 ### Pas de logo en tête d'article
 - Le titre WordPress est mis dans le champ WP, donc PAS de bloc `lcd-logo-top` dans le HTML
 - L'article démarre directement par le bloc intro avec fond gris

@@ -1,16 +1,30 @@
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  .lcd-wrap { max-width: 760px; margin: 0 auto; font-family: 'Montserrat', sans-serif; }
-  .lcd-intro-box { background: #eeeff1 !important; border-radius: 24px !important; padding: 38px 40px 28px !important; margin: 8px 0 36px !important; }
-  .lcd-intro-box p { margin: 0 0 16px !important; }
-  .lcd-intro-box p:last-child { margin-bottom: 0 !important; }
-  .lcd-update { color: #6b7280 !important; font-size: 14.5px !important; font-style: italic !important; line-height: 1.55 !important; margin: 0 0 22px !important; padding-bottom: 18px !important; border-bottom: 1px solid #d8dadf !important; }
-  .lcd-update strong { color: #4a5568 !important; font-weight: 700 !important; font-style: normal !important; }
-  .lcd-video { position: relative !important; width: 100% !important; padding-bottom: 56.25% !important; height: 0 !important; margin: 0 0 44px !important; border-radius: 18px !important; overflow: hidden !important; }
-  .lcd-video iframe { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; border: 0 !important; }
+  .lcd-wrap { font-family: 'Montserrat', sans-serif !important; max-width: 760px; margin: 0 auto; padding: 60px 48px; background: #ffffff; color: #2a3548; font-size: 17px; line-height: 1.7; }
+  .lcd-wrap h2 { color: #FF5101; font-weight: 800; font-size: 30px; line-height: 1.25; margin: 56px 0 20px; }
+  .lcd-wrap h3 { color: #182745; font-weight: 700; font-size: 22px; line-height: 1.35; margin: 36px 0 14px; }
+  .lcd-wrap p { margin: 0 0 18px; }
+  .lcd-wrap a { color: #FF5101; font-weight: 600; text-decoration: none; }
+  .lcd-wrap a:hover { text-decoration: underline; }
+  .lcd-wrap strong { color: #182745; font-weight: 700; }
+  .lcd-wrap ul { padding-left: 22px; margin: 0 0 20px; }
+  .lcd-wrap ul li { margin-bottom: 10px; }
+  .lcd-intro-box { background: #eeeff1; border-radius: 24px; padding: 38px 40px 28px; margin: 8px 0 36px; }
+  .lcd-intro-box p { margin: 0 0 16px; }
+  .lcd-intro-box p:last-child { margin-bottom: 0; }
+  .lcd-update { color: #6b7280; font-size: 14.5px; font-style: italic; line-height: 1.55; margin: 0 0 22px !important; padding-bottom: 18px; border-bottom: 1px solid #d8dadf; }
+  .lcd-update strong { color: #4a5568; font-weight: 700; font-style: normal; }
+  .lcd-video { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 18px; margin: 0 0 40px; }
+  .lcd-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 18px; }
   @media (max-width: 540px) {
-    .lcd-intro-box { padding: 28px 22px 22px !important; border-radius: 18px !important; }
+    .lcd-wrap { padding: 40px 22px; font-size: 16px; }
+    .lcd-wrap h2 { font-size: 25px; margin-top: 44px; }
+    .lcd-wrap h3 { font-size: 20px; margin-top: 28px; }
+    .lcd-intro-box { padding: 28px 22px 22px; border-radius: 18px; }
   }
 </style>
+
+<div class="lcd-wrap">
 
 <div class="lcd-intro-box">
   <p class="lcd-update"><strong>Dernière modification : 21 août 2026</strong> : guide de la liasse fiscale LMNP mis à jour avec les règles applicables aux revenus 2025.</p>
@@ -550,3 +564,5 @@
   });
 })();
 </script>
+
+</div>
