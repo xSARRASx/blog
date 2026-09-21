@@ -39,8 +39,9 @@ dups = []
 for i in range(1, len(sentences)):
     a = norm(sentences[i-1]).split(); b = norm(sentences[i]).split()
     if a and b and a[0] == b[0]: dups.append((sentences[i-1][:45], sentences[i][:45]))
-internal = re.findall(r'href="(https://www\.locationcourteduree\.fr/[^"]+)"', html)
-blank_internal = re.findall(r'<a[^>]+href="https://www\.locationcourteduree\.fr/[^"]*"[^>]*target="_blank"', html)
+SITE = sys.argv[4] if len(sys.argv) > 4 else "www.locationcourteduree.fr"
+internal = re.findall(r'href="(https://%s/[^"]+)"' % re.escape(SITE), html)
+blank_internal = re.findall(r'<a[^>]+href="https://%s/[^"]*"[^>]*target="_blank"' % re.escape(SITE), html)
 mdash = html.count('—') + html.count('&mdash;')
 h1 = len(re.findall(r'<h1', html, re.I))
 faq_p = len(re.findall(r'<p class="faq[a-z0-9]*-divider"', html, re.I))
@@ -60,10 +61,17 @@ print(f(len(set(internal))>=2)+"LIENS INTERNES     : %d (uniques %d)" % (len(int
 print(f(not blank_internal)+"INTERNES _blank    : %d" % len(blank_internal))
 print(f(mdash==0)+"TIRETS LONGS       : %d" % mdash)
 print(f(h1==0)+"H1                 : %d" % h1)
-print(f(faq_p==0 and faq_h3>0)+"FAQ dividers       : h3=%d p=%d" % (faq_h3, faq_p))
+if faq_h3 or faq_p:
+    print(f(faq_p==0 and faq_h3>0)+"FAQ dividers       : h3=%d p=%d" % (faq_h3, faq_p))
+else:
+    print("   FAQ dividers       : pas d'accordeon dans cet article")
 print(f(kw_first)+"KW 1er paragraphe  : %s" % kw_first)
-nwrap = html.count('class="lcd-wrap"')
-print(f(nwrap == 1)+"WRAPPER lcd-wrap   : %d (obligatoire)" % nwrap)
+WRAP = sys.argv[3] if len(sys.argv) > 3 else "lcd-wrap"
+if WRAP == "none":
+    print("   WRAPPER            : non requis (site hors LCD)")
+else:
+    nwrap = html.count('class="%s"' % WRAP)
+    print(f(nwrap == 1)+"WRAPPER %-10s : %d (obligatoire)" % (WRAP, nwrap))
 print("="*60)
 for a,b in dups[:10]: print("  DUP: '%s...' -> '%s...'" % (a,b))
 for s in passives[:10]: print("  PASSIVE: %s" % s[:110])
