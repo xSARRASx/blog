@@ -111,6 +111,13 @@
       "article": "article-gestion-airbnb.html",
       "wp_post_id": 10394,
       "note": "transcription collée par Martin (blocage anti-bot YouTube, YT_COOKIES non configurée)"
+    },
+    {
+      "id": "U6vGmP7QX1k",
+      "date_traitement": "2026-09-28",
+      "article": "article-lmnp-2027.html",
+      "wp_post_id": 10396,
+      "note": "transcription recuperee automatiquement (1er succes yt-dlp depuis le 24/08)"
     }
   ]
 }
