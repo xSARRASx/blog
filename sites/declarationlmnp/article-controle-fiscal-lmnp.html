@@ -1,0 +1,277 @@
+<style>
+  .cl-wrap { font-family: inherit; }
+  .cl-intro { background: #e8eef6; border-radius: 16px; padding: 28px 30px 20px; margin: 0 0 32px; }
+  .cl-intro p:last-child { margin-bottom: 0; }
+  .cl-card { background: #182745; border-radius: 16px; padding: 24px 26px; margin: 30px 0; }
+  .cl-ct { color: #ffffff; font-weight: 800; font-size: 16px; margin: 0 0 4px; }
+  .cl-cs { color: #9aa6bd; font-size: 12.5px; margin: 0 0 18px; }
+  .cl-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cl-r { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 11px 14px; color: #d8dfec; font-size: 13px; line-height: 1.4; }
+  .cl-r b { color: #ffffff; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .cl-foot { margin-top: 16px; padding-top: 14px; border-top: 1px solid #2f4268; color: #9aa6bd; font-size: 12.5px; line-height: 1.55; }
+  .cl-foot b { color: #4478F2; }
+  .cl-err { display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: start; background: #f5f8fd; border-radius: 14px; padding: 15px 18px; margin-bottom: 11px; border-left: 4px solid #4478F2; }
+  .cl-en { width: 40px; height: 40px; border-radius: 50%; background: #4478F2; color: #ffffff; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; }
+  .cl-et { color: #182745; font-weight: 800; font-size: 15px; margin-bottom: 3px; }
+  .cl-ed { color: #4b5570; font-size: 13.5px; line-height: 1.5; }
+  .cl-bar { display: flex; height: 52px; border-radius: 12px; overflow: hidden; margin: 8px 0; }
+  .cl-seg { display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: 800; font-size: 14px; }
+  .cl-s1 { background: #182745; width: 84.5%; }
+  .cl-s2 { background: #4478F2; width: 15.5%; font-size: 12px; }
+  .cl-leg { display: flex; justify-content: space-between; color: #4b5570; font-size: 12.5px; font-weight: 700; margin-bottom: 14px; }
+  .cl-tag { background: #22c55e; color: #ffffff; font-size: 12px; font-weight: 800; padding: 8px 14px; border-radius: 8px; display: inline-block; }
+  .cl-rule { background: #e8eef6; border-radius: 16px; padding: 22px 24px; margin: 26px 0; }
+  .cl-rt { display: flex; height: 44px; border-radius: 10px; overflow: hidden; }
+  .cl-rl { background: #22c55e; width: 46%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: 800; font-size: 13.5px; }
+  .cl-rr { background: #182745; width: 54%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: 800; font-size: 13.5px; }
+  .cl-piv { text-align: center; margin: 12px 0 14px; }
+  .cl-pivt { display: inline-block; background: #ffffff; border: 2px solid #182745; color: #182745; font-size: 13px; font-weight: 800; padding: 6px 16px; border-radius: 20px; }
+  .cl-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cl-mb { background: #ffffff; border-radius: 12px; padding: 13px 15px; }
+  .cl-mbl { color: #6b7280; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .cl-mbv { color: #182745; font-size: 19px; font-weight: 800; }
+  .cl-mbd { color: #4b5570; font-size: 12px; line-height: 1.4; margin-top: 3px; }
+  .cl-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+  .cl-table th { background: #182745; color: #ffffff; text-align: left; padding: 11px 13px; font-weight: 700; font-size: 13px; }
+  .cl-table td { padding: 11px 13px; border-bottom: 1px solid #e3e8f2; color: #4b5570; }
+  .cl-table tr:nth-child(even) td { background: #f7f9fd; }
+  .cl-table td b { color: #182745; }
+  .cl-cta { background: #182745; border-radius: 16px; padding: 26px 28px; margin: 32px 0; }
+  .cl-cta-t { margin: 0 0 8px; color: #ffffff; font-weight: 800; font-size: 19px; }
+  .cl-cta-d { margin: 0 0 18px; color: #c6d0e4; font-size: 14.5px; line-height: 1.55; }
+  .cl-btn { display: inline-block; background: #4478F2; color: #ffffff; font-weight: 700; font-size: 15px; padding: 13px 28px; border-radius: 28px; text-decoration: none; }
+  .cl-warn { background: #fff5f5; border-left: 4px solid #e35d5d; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 24px 0; color: #4b5570; font-size: 14px; line-height: 1.55; }
+  .cl-warn b { color: #182745; }
+  @media (max-width: 540px) {
+    .cl-intro { padding: 22px 18px 16px; } .cl-rows, .cl-mini { grid-template-columns: 1fr; }
+    .cl-err { grid-template-columns: 40px 1fr; } .cl-en { width: 34px; height: 34px; font-size: 15px; }
+  }
+</style>
+<div class="cl-wrap">
+
+<div class="cl-intro">
+  <p>Le fisc ne vous surveille pas. Il n'en a pas besoin : il connaît déjà vos chiffres. Un <strong>contrôle fiscal LMNP</strong> ne part presque jamais d'un soupçon, mais d'un simple écart entre deux fichiers.</p>
+  <p>Chaque mois de janvier, Airbnb, Booking, Abritel et Leboncoin transmettent vos données à l'administration. Concrètement, cela couvre votre chiffre d'affaires, votre IBAN et votre nombre de nuits vendues. Ensuite, un algorithme compare le tout à votre déclaration.</p>
+  <p>Cet article détaille les cinq erreurs qui font remonter un dossier. Ensuite, il aborde le cas des expatriés et la manière dont une déclaration propre vous met à l'abri.</p>
+</div>
+
+<h2>Contrôle fiscal LMNP : ce que l'administration sait déjà</h2>
+
+<p>Tout part d'une directive européenne appelée DAC7, en vigueur depuis le 1er janvier 2023. En pratique, les premières transmissions ont eu lieu en 2024. Désormais, les plateformes déclarent vos revenus à votre place.</p>
+
+<h3>Les seuils qui exposent à un contrôle fiscal LMNP</h3>
+
+<p>Ainsi, dès 2 000 euros encaissés ou 30 transactions dans l'année, la transmission devient automatique. Par ailleurs, vous recevez chaque année un courriel de la plateforme intitulé rapport annuel de vos revenus.</p>
+
+<p>Toutefois, ne vous méprenez pas sur ce document. En effet, ce n'est pas un récapitulatif de courtoisie : c'est la copie exacte de ce que l'administration a reçu de son côté.</p>
+
+<div class="cl-card">
+  <p class="cl-ct">Ce que la plateforme transmet, ligne par ligne</p>
+  <p class="cl-cs">Contenu du fichier DAC7 adressé à l'administration fiscale</p>
+  <div class="cl-rows">
+    <div class="cl-r"><b>Identité</b>Nom, prénom et adresse du loueur</div>
+    <div class="cl-r"><b>Numéro fiscal</b>Votre identifiant unique de contribuable</div>
+    <div class="cl-r"><b>IBAN</b>Le compte bancaire qui reçoit les virements</div>
+    <div class="cl-r"><b>Montant versé</b>Le total encaissé sur l'année</div>
+    <div class="cl-r"><b>Transactions</b>Le nombre de réservations et de nuits</div>
+    <div class="cl-r"><b>Commissions</b>Le montant retenu par la plateforme</div>
+  </div>
+  <div class="cl-foot">Adresse du bien comprise. En 2025, <b>54 % des dossiers de particuliers</b> orientés vers un contrôle l'ont été par croisement automatisé de ces données avec les déclarations.</div>
+</div>
+
+<h3>Les quatre sources croisées avant un contrôle fiscal LMNP</h3>
+
+<p>Par ailleurs, l'analyse ne se limite pas au fichier des plateformes. Précisément, quatre éléments entrent dans la comparaison : votre déclaration 2042-C-PRO, les fichiers DAC7, vos relevés bancaires et vos déclarations des années antérieures.</p>
+
+<p>Ce dernier point pèse lourd dans le déclenchement d'un contrôle fiscal LMNP. Ainsi, un tableau d'amortissement qui change de logique d'une année sur l'autre saute immédiatement aux yeux.</p>
+
+<h2>Les cinq erreurs qui déclenchent un contrôle fiscal LMNP</h2>
+
+<p>Enfin, voici les cinq motifs qui déclenchent un contrôle fiscal LMNP en premier. Effectivement, aucun ne relève de la fraude sophistiquée : ce sont des erreurs ordinaires.</p>
+
+<div class="cl-err">
+  <div class="cl-en">1</div>
+  <div><div class="cl-et">L'écart entre leurs chiffres et les vôtres</div><div class="cl-ed">Le motif le plus fréquent, et le plus mécanique à détecter</div></div>
+</div>
+<div class="cl-err">
+  <div class="cl-en">2</div>
+  <div><div class="cl-et">Le seuil de 23 000 euros et l'URSSAF</div><div class="cl-ed">Une campagne de régularisation massive est en cours</div></div>
+</div>
+<div class="cl-err">
+  <div class="cl-en">3</div>
+  <div><div class="cl-et">L'amortissement bricolé</div><div class="cl-ed">Là où se concentrent les vérifications au régime réel</div></div>
+</div>
+<div class="cl-err">
+  <div class="cl-en">4</div>
+  <div><div class="cl-et">Les charges sans justificatif</div><div class="cl-ed">Ce que vous ne pouvez pas prouver saute</div></div>
+</div>
+<div class="cl-err">
+  <div class="cl-en">5</div>
+  <div><div class="cl-et">Les petites taxes oubliées</div><div class="cl-ed">CFE et taxe de séjour servent de porte d'entrée</div></div>
+</div>
+
+<h3>Erreur 1 : déclarer le net au lieu du brut</h3>
+
+<p>Concrètement, l'algorithme fait une opération simple. Il prend le montant transmis par la plateforme et le compare au vôtre. Ensuite, il remonte votre dossier dès qu'un écart apparaît.</p>
+
+<p>Or beaucoup de loueurs déclarent le montant reçu sur leur compte bancaire. C'est une erreur : <strong>le montant à déclarer est le brut</strong>, avant la commission de la plateforme, frais de ménage inclus.</p>
+
+<div class="cl-bar">
+  <div class="cl-seg cl-s1">Ce que vous déclarez : 20 000 €</div>
+  <div class="cl-seg cl-s2">15,5 %</div>
+</div>
+<div class="cl-leg"><span>Montant brut versé par la plateforme</span><span>Commission</span></div>
+<p><span class="cl-tag">Au régime réel, la commission redevient une charge déductible</span></p>
+
+<p>Ensuite, trois autres pièges créent un écart sans que vous le vouliez :</p>
+
+<ul>
+  <li><strong>Une plateforme oubliée</strong> : deux réservations sur Booking en plus de votre activité Airbnb suffisent. L'administration, elle, additionne bien les deux fichiers.</li>
+  <li><strong>Un montant jugé négligeable</strong> : une année de démarrage à 3 000 euros reste déclarable, puisque le seuil de transmission se situe à 2 000 euros.</li>
+  <li><strong>La taxe de séjour et la caution</strong> : ce ne sont pas des revenus. Les ajouter vous fait payer de l'impôt pour rien.</li>
+</ul>
+
+<p>Ainsi, la bonne méthode de janvier tient en une phrase. Prenez le rapport annuel de chaque plateforme, additionnez-les, puis reportez ce total dans votre déclaration. Surtout, ce chiffre doit correspondre, pas approcher.</p>
+
+<h3>Erreur 2 : franchir 23 000 euros sans passer à l'URSSAF</h3>
+
+<p>Désormais, voilà l'actualité 2026 dont peu de monde parle. L'URSSAF a lancé une campagne de régularisation massive. Concrètement, elle adresse des questionnaires aux loueurs ayant dépassé 23 000 euros de recettes brutes en 2024 et 2025, sur la base des fichiers DAC7.</p>
+
+<div class="cl-rule">
+  <div class="cl-rt">
+    <div class="cl-rl">Sous 23 000 €</div>
+    <div class="cl-rr">Au-dessus : affiliation obligatoire</div>
+  </div>
+  <div class="cl-piv"><span class="cl-pivt">Seuil calculé sur les recettes BRUTES</span></div>
+  <div class="cl-mini">
+    <div class="cl-mb">
+      <div class="cl-mbl">Cotisations sociales</div>
+      <div class="cl-mbv">35 à 45 %</div>
+      <div class="cl-mbd">du bénéfice BIC net, et non du chiffre d'affaires</div>
+    </div>
+    <div class="cl-mb">
+      <div class="cl-mbl">Minimum forfaitaire</div>
+      <div class="cl-mbv">environ 1 200 €</div>
+      <div class="cl-mbd">dus chaque année, même avec un bénéfice nul</div>
+    </div>
+  </div>
+</div>
+
+<p>Toutefois, ne confondez pas deux mécanismes distincts. Ces cotisations d'indépendant n'ont rien à voir avec les prélèvements sociaux. De plus, le seuil de 23 000 euros ne détermine pas le statut de loueur professionnel.</p>
+
+<p>En effet, le statut LMP exige en plus que vos recettes dépassent les autres revenus de votre foyer. De ce fait, vous pouvez parfaitement payer des cotisations tout en restant loueur en meublé non professionnel, comme nous l'expliquions dans notre comparatif <a href="https://www.declarationlmnp.fr/lmp-ou-lmnp-en-2026-choisir-avant-la-reforme/">LMP ou LMNP</a>.</p>
+
+<h3>Erreur 3 : l'amortissement bricolé, cible n°1 du contrôle fiscal LMNP</h3>
+
+<p>En effet, au régime réel, l'amortissement constitue votre premier avantage. Pourtant, les déclarations remplies à la main y accumulent les erreurs, et les vérificateurs le savent.</p>
+
+<p>Trois bricolages reviennent systématiquement dans les dossiers qui finissent en contrôle fiscal LMNP. Tout d'abord, amortir le terrain, qui ne s'use pas et ne s'amortit donc jamais. Sortez donc sa valeur de la base : comptez 10 à 20 % du prix d'achat, parfois 30 à 40 % en zone très dense.</p>
+
+<p>Ensuite, calquer la durée sur celle du crédit. Pourtant, l'amortissement se calcule par composant, sans aucun rapport avec votre emprunt.</p>
+
+<table class="cl-table">
+  <tr><th>Composant</th><th>Durée d'amortissement</th></tr>
+  <tr><td><b>Gros œuvre</b></td><td>40 à 50 ans</td></tr>
+  <tr><td><b>Toiture</b></td><td>environ 25 ans</td></tr>
+  <tr><td><b>Électricité et plomberie</b></td><td>15 à 20 ans</td></tr>
+  <tr><td><b>Mobilier</b></td><td>5 à 10 ans</td></tr>
+  <tr><td colspan="2">Base amortissable = prix d'achat + frais d'acquisition &minus; valeur du terrain</td></tr>
+</table>
+
+<p>Enfin, mélanger le mobilier et le bâti dans un seul tableau. Cette erreur coûte cher à la revente. En effet, <a href="https://www.declarationlmnp.fr/reintegration-des-amortissements-lmnp-2026-et-son-impact/">les amortissements de l'immobilier réintègrent la plus-value</a> depuis 2025, alors que le mobilier en reste exclu.</p>
+
+<p>Enfin, un point sur la base de calcul : les frais d'acquisition en font partie. Ainsi, le simulateur <a href="https://www.calculfraisdenotaire.net/" target="_blank" rel="noopener">calculfraisdenotaire.net</a> vous donne le montant exact à intégrer.</p>
+
+<h3>Erreur 4 : déduire ce que vous ne pouvez pas prouver</h3>
+
+<p>Tout d'abord, l'administration dispose de trois ans pour revenir sur une déclaration. Cependant, elle peut réclamer les justificatifs sur les six dernières années.</p>
+
+<p>Par exemple, le ménage payé en liquide ou les travaux sans facture sautent au premier contrôle. À l'inverse, une charge parfaitement déductible se perd souvent par simple oubli. Notamment, la commission de la plateforme, désormais à 15,5 %, se télécharge facture par facture depuis votre compte hôte.</p>
+
+<h3>Erreur 5 : oublier la CFE et la taxe de séjour</h3>
+
+<p>En effet, louer en meublé revient à exercer une activité professionnelle au sens de la cotisation foncière des entreprises. Ainsi, la CFE reste due même au micro et pour un seul bien. Elle tombe en décembre, comme le détaille notre article sur <a href="https://www.declarationlmnp.fr/cfe-lmnp-2026/">la CFE en LMNP</a>.</p>
+
+<p>Quant à la taxe de séjour, les plateformes conventionnées la collectent et la reversent directement. En revanche, en direct ou via une plateforme qui ne la collecte pas, cette responsabilité vous revient entièrement.</p>
+
+<div class="cl-warn"><b>Pourquoi ces petites taxes comptent autant.</b> Un dossier qui oublie la CFE et la taxe de séjour envoie un signal simple au vérificateur : si le plus visible manque, le reste mérite un examen. Ces oublis servent de porte d'entrée, rarement de motif principal.</div>
+
+<h2>Contrôle fiscal LMNP : le cas des expatriés a changé en 2026</h2>
+
+<p>Autrefois, un loueur expatrié basculait automatiquement en LMP. En effet, la raison tenait à la mécanique du calcul. Ainsi, seuls les revenus de source française entraient dans la comparaison, donc les recettes locatives dépassaient forcément le reste.</p>
+
+<p>Désormais, une doctrine administrative retient aussi les revenus perçus à l'étranger. La condition tient en une ligne : ils doivent supporter une imposition équivalente à l'impôt français. De ce fait, vous conservez le statut LMNP en le démontrant.</p>
+
+<p>Toutefois, deux profils restent exposés. Tout d'abord, le retraité dont la pension française reste inférieure à ses loyers. Ensuite, le résident d'un pays sans impôt sur le revenu, Dubaï par exemple. Là, aucune imposition équivalente ne vient s'ajouter au calcul.</p>
+
+<p>Notons toutefois un avantage rarement mentionné. Un loueur professionnel non-résident ne peut pas s'affilier à l'URSSAF. De ce fait, il échappe aux cotisations d'indépendant tout en restant redevable des prélèvements sociaux. Concrètement, l'écart entre 35 à 45 % et le seul taux des prélèvements représente une économie sérieuse. Pour le reste du cadre applicable, consultez notre dossier sur <a href="https://www.declarationlmnp.fr/lmnp-expatrie/">le LMNP expatrié</a>.</p>
+
+<h2>Ce qui vous protège vraiment d'un contrôle fiscal LMNP</h2>
+
+<p>Face à un contrôle fiscal LMNP, la protection ne tient pas à la chance. En effet, elle tient à une déclaration cohérente, déposée sur les bons formulaires.</p>
+
+<h3>Les bons formulaires, première protection contre un contrôle fiscal LMNP</h3>
+
+<p>Précisons un point souvent confondu : vos revenus meublés ne vont jamais dans les revenus fonciers. Ainsi, ils relèvent des bénéfices industriels et commerciaux.</p>
+
+<table class="cl-table">
+  <tr><th>Situation</th><th>Cases et formulaires</th></tr>
+  <tr><td><b>Micro-BIC classique</b></td><td>5ND, 5OD, 5PD</td></tr>
+  <tr><td><b>Meublé de tourisme classé ou chambre d'hôtes</b></td><td>5NG, 5OG, 5PG</td></tr>
+  <tr><td><b>Régime réel, bénéfice</b></td><td>5NA, 5OA, 5PA</td></tr>
+  <tr><td><b>Régime réel, déficit</b></td><td>5NY, 5OY, 5PY</td></tr>
+  <tr><td><b>Non-résident</b></td><td>2042-NR en complément</td></tr>
+  <tr><td><b>Au réel, dans tous les cas</b></td><td>2042-C-PRO, plus la liasse 2031 et les annexes 2033</td></tr>
+</table>
+
+<p>Concrètement, la liasse comprend le bilan, le compte de résultat et le tableau des amortissements. Notre <a href="https://www.declarationlmnp.fr/liasse-fiscale-lmnp-2026/">guide de la liasse fiscale LMNP</a> détaille chaque annexe.</p>
+
+<h3>Régulariser avant le contrôle fiscal LMNP coûte quatre fois moins cher</h3>
+
+<p>Ainsi, si vous repérez une erreur sur une année passée, corrigez-la spontanément. La majoration se limite alors à 10 %.</p>
+
+<p>À l'inverse, une erreur que l'administration relève elle-même expose à 40 à 80 % de majoration. De ce fait, sur trois années reprises, l'écart se chiffre en milliers d'euros.</p>
+
+<div class="cl-cta">
+  <p class="cl-cta-t">Une déclaration qui tombe juste, du premier coup</p>
+  <p class="cl-cta-d">Tableau d'amortissement par composant, terrain sorti et mobilier séparé. Liasse 2031 et annexes 2033-A à D générées, fichier des écritures comptables exportable en cas de contrôle. Paiement unique de 247 euros, logements illimités, mises à jour fiscales incluses.</p>
+  <a class="cl-btn" href="https://www.declarationlmnp.fr/">Découvrir le logiciel</a>
+</div>
+
+<h2>Ce qui arrive avec le budget 2027</h2>
+
+<p>Désormais, les discussions parlementaires démarrent le 12 octobre. Pourtant, le meublé figure encore parmi les niches citées comme révisables, en particulier sur l'amortissement.</p>
+
+<p>En effet, un rapport du 8 juillet 2026 recommande un plafonnement des taux d'amortissement, ce qui pèserait sur le contrôle fiscal LMNP. Toutefois, le texte ne fixe à ce jour ni taux ni date. Par ailleurs, le blog <a href="https://www.locationcourteduree.fr/2026/09/28/lmnp-2027/" target="_blank" rel="noopener">locationcourteduree.fr</a> trie ce qui relève du voté, du rejeté et de la rumeur.</p>
+
+<h2>Vos questions sur le contrôle fiscal LMNP</h2>
+
+<h3>Dois-je déclarer si j'ai encaissé moins de 2 000 euros ?</h3>
+
+<p>Non, l'obligation déclarative ne dépend pas de ce seuil. En effet, celui-ci ne concerne que la transmission automatique par la plateforme. Ainsi, vos revenus restent imposables et votre déclaration reste due.</p>
+
+<h3>Que faire si mes chiffres diffèrent de ceux de la plateforme ?</h3>
+
+<p>Un contrôle fiscal LMNP démarre souvent là. Vérifiez donc la cause : commission déduite par erreur, taxe de séjour ajoutée à tort, ou plateforme oubliée. Ensuite, conservez le rapport annuel de chaque plateforme, car il constitue votre pièce justificative en cas de question.</p>
+
+<h3>La taxe foncière entre-t-elle dans mes charges déductibles ?</h3>
+
+<p>Effectivement, au régime réel elle se déduit intégralement. Toutefois, partez du bon montant : une anomalie sur votre fiche cadastrale se répète chaque année. Ainsi, <a href="https://www.verifoncier.fr/" target="_blank" rel="noopener">verifoncier.fr</a> recalcule gratuitement votre cotisation et détecte les erreurs de surface.</p>
+
+<h3>Combien de temps dois-je conserver mes justificatifs ?</h3>
+
+<p>Comptez six ans, car un contrôle fiscal LMNP peut remonter loin. En pratique, le délai de reprise atteint trois ans, mais la conservation des pièces couvre une période plus longue. Ainsi, l'administration peut encore réclamer aujourd'hui une facture de 2021.</p>
+
+<h2>Contrôle fiscal LMNP : ce qu'il faut retenir</h2>
+
+<p>En résumé, l'administration détient vos chiffres avant vous. Votre déclaration doit donc tomber juste plutôt qu'approcher. Ensuite, au-delà de 23 000 euros de recettes brutes, l'URSSAF vous écrira. Enfin, un tableau d'amortissement propre vous protège deux fois : pendant le contrôle, et le jour de la revente.</p>
+
+<p>Aucune des cinq erreurs qui déclenchent un contrôle fiscal LMNP ne relève de la fraude. Toutes relèvent plutôt d'une déclaration faite à la main, sans méthode. C'est précisément ce qu'un outil dédié élimine.</p>
+
+<h2>Prêt à déclarer votre LMNP sans expert-comptable ?</h2>
+
+<p>Le logiciel déclarationlmnp.fr génère votre liasse 2031 et ses annexes 2033, calcule vos amortissements par composant et vous indique précisément les cases à reporter. Ainsi, vous déposez une déclaration juste, sans cabinet et sans stress.</p>
+
+<p><a href="https://www.declarationlmnp.fr/">Découvrir le logiciel de déclaration LMNP</a></p>
+
+</div>

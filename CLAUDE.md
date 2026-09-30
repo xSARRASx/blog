@@ -39,6 +39,7 @@ Ce fichier consigne les règles, apprentissages et historique pour accélérer l
 - **CHECK-SEO / le script accepte désormais 4 arguments** : `python3 .robot-blog/check-seo.py <fichier> "<mot-clé>" [wrapper|none] [domaine]`. Le 3e argument vaut `lcd-wrap` par défaut et `none` pour les sites hors LCD ; le 4e fixe le domaine des liens internes (`www.locationcourteduree.fr` par défaut). Utile pour calculfraisdenotaire.net et declarationlmnp.fr.
 - **WORDPRESS / pare-feu 403 sur les métadonnées média (27/08/2026)** : envoyer `alt_text`, `title`, `caption` et `description` dans UN SEUL POST déclenche parfois un 403 Apache (page `Forbidden`, pas une erreur WP). Remède : les envoyer **un champ par requête**, ça passe à chaque fois. Le pare-feu limite aussi la cadence : un 403 isolé sur une lecture ou sur l'accueil est transitoire, il suffit de refaire l'appel. **ATTENTION à l'alt** : il doit contenir l'expression clé AVEC ses accents, sinon Yoast ne la reconnaît pas.
 - **GEMINI / NE JAMAIS METTRE DE CODE HEXADÉCIMAL DANS LE PROMPT (09/09/2026)** : écrire `#FF5101` dans le prompt fait parfois imprimer littéralement « FF510 » dans l'image générée. Décrire les couleurs EN TOUTES LETTRES (« bright vivid orange », « deep dark navy blue »). Ajouter aussi une consigne de CADRAGE explicite (« the subject fills most of the frame, small even margin »), sinon Gemini centre un petit sujet dans beaucoup de vide, ce qui se recadre mal en image mise en avant.
+- **GEMINI / FORMAT 16:9 ET ZÉRO TEXTE (30/09/2026)** : sans consigne, Gemini sort un carré 1024x1024 et glisse des mots anglais (« TAX », « SOLD ») dès qu'on évoque un formulaire ou un panneau. Remède validé : ajouter `"imageConfig":{"aspectRatio":"16:9"}` dans `generationConfig` (sortie 1344x768), écrire « Absolutely no text, no words, no letters, no numbers, no signs, no labels anywhere », et éviter de nommer des objets porteurs de texte (panneau « vendu », formulaire fiscal) : décrire plutôt des clés, une loupe, une balance, un bâtiment. Toujours REGARDER l'image avant de la livrer.
 - **PIÈGE CRITIQUE : NE JAMAIS RÉUTILISER UN FICHIER DE RÉPONSE curl SANS LE VÉRIFIER (erreur commise le 09/09/2026)** : quand un upload échoue avec `http=000` (tunnel proxy coupé), `curl -o media.json` laisse INTACTE la réponse précédente. En lisant `media.json` juste après, on récupère l'ID de l'ANCIEN média et on écrase ses métadonnées. C'est arrivé sur le média 10381 (frais Airbnb), écrasé par les valeurs de faux-riches puis restauré. **RÈGLE : `rm -f` le fichier de sortie AVANT chaque appel, et vérifier que la réponse correspond bien à l'objet attendu (slug ou nom de fichier) avant d'en exploiter l'ID.** Idem pour les POST d'articles : toujours contrôler `d['slug']` avant de lire `d['id']`.
 - **IMAGES : génération par API Gemini** (clé `GEMINI_API_KEY` déjà en variable d'environnement, testée OK le 31/07) : modèle `gemini-2.5-flash-image`, endpoint `generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent`, header `x-goog-api-key`, réponse inlineData base64 → `<slug>.png`. Fallback : miniature YouTube (`yt-dlp --write-thumbnail`).
 - **Champs Yoast par API : RÉSOLU le 31/07/2026, désormais 100 % automatiques.** Extension `Code Snippets` (installée + activée par API) + snippet **id 5 « Robot blog - champs Yoast API »** (scope global, actif) qui fait un `register_post_meta` sur `_yoast_wpseo_focuskw`, `_yoast_wpseo_title`, `_yoast_wpseo_metadesc` (auth_callback `current_user_can('edit_posts')`). Le Robot écrit donc les 3 champs dans `meta` au POST de l'article, puis RELIT le post en `context=edit` pour confirmer. Marche arrière : désactiver le snippet 5 (interrupteur dans wp-admin → Snippets, ou API `POST /wp-json/code-snippets/v1/snippets/5` avec `{"active":false}`).
@@ -79,6 +80,27 @@ Un lien vers un AUTRE domaine est un lien **EXTERNE** pour Yoast, même si les d
 ### Dosage
 
 Viser **1 à 3 liens croisés par article**, placés là où ils rendent vraiment service au lecteur. Ne jamais empiler les cinq sites dans un même paragraphe : cela ressemble à une ferme de liens et dessert le référencement.
+
+### S'ADAPTER À CHAQUE SITE (demande de Martin, 30/09/2026 : « tu t'adapte au site pour que ce soit le mieux possible »)
+
+Hors LCD, **ne PAS plaquer le gabarit LCD**. Chaque site a sa propre signature, à respecter :
+
+- **Commun aux deux sites hors LCD** : pas de `.lcd-wrap`, AUCUNE règle CSS sur `h2`, `h3`, `p`, `strong`, `a`, `ul` (les titres et le texte héritent du thème du site). Le wrapper se réduit à `.xx-wrap { font-family: inherit; }`. Seuls les visuels gardent leurs propres styles préfixés. Livraison en HTML à coller par Martin (pas d'accès API en écriture), check-seo avec `none` + domaine du site.
+- **declarationlmnp.fr** : bleu `#4478F2`, vert `#22c55e`, navy `#182745`, gris `#e8eef6`. Martin insère lui-même son **widget lead magnet** en tête d'article (le rappeler à chaque livraison). Dernier H2 standard du site, à reprendre tel quel : « Prêt à déclarer votre LMNP sans expert-comptable ? » + paragraphe logiciel + lien `https://www.declarationlmnp.fr/`.
+- **calculfraisdenotaire.net** : navy `#1d1f45`, bleu `#4175FC`, gris `#f2f3f8`. H2 et H3 **numérotés** (« 1. », « 1.1. »), dernier H2 « Conclusion : ce qu'il faut retenir sur [expression clé] », et phrase finale renvoyant au simulateur : « Vous envisagez un achat immobilier ? Calculez précisément votre budget avec notre simulateur de frais de notaire sur calculfraisdenotaire.net ». ATTENTION : la numérotation fait baisser le taux de transitions mesuré, compenser par de vrais connecteurs.
+- **Pare-feu de ces deux sites + verifoncier.fr** : lectures en rafale = 403 (même avec User-Agent navigateur). Espacer les appels de 5 à 30 s ; pour vérifier qu'un article lié existe, `wp-json/wp/v2/posts?slug=<slug>` ou `?search=<mot>` passe mieux que la page publique.
+- **Ordre de publication** : si un article hors LCD fait un lien interne vers un autre article encore en attente, le signaler à Martin (publier la cible d'abord, sinon lien mort).
+
+### Articles livrés hors LCD (HTML à coller par Martin)
+
+| Fichier | Site | Mot-clé | Source |
+|---|---|---|---|
+| sites/calculfraisdenotaire/article-contester-taxe-fonciere.html | calculfraisdenotaire.net | taxe foncière | demande de Sébastien (article VériFoncier) |
+| sites/declarationlmnp/article-lmnp-expatrie.html | declarationlmnp.fr | LMNP expatrié | vidéo 183 jours (ZdEMuAtcJcE) |
+| sites/declarationlmnp/article-controle-fiscal-lmnp.html | declarationlmnp.fr | contrôle fiscal LMNP | vidéo h0fE0L6d5QI (« Le fisc a déjà tes chiffres Airbnb ») |
+| sites/calculfraisdenotaire/article-plus-value-residence-principale.html | calculfraisdenotaire.net | plus-value résidence principale | vidéo lc1huihoLio (« Le risque caché de votre résidence principale ») |
+
+Une même vidéo peut nourrir un article LCD ET un article hors LCD, à condition de changer de mot-clé et d'angle (pas de cannibalisation).
 
 ## 1ter. MESSAGES VOCAUX DE MARTIN : transcription Whisper (procédure validée, 11/08/2026)
 

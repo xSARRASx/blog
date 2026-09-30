@@ -1,0 +1,271 @@
+<style>
+  .pv-wrap { font-family: inherit; }
+  .pv-intro { background: #f2f3f8; border-radius: 16px; padding: 28px 30px 20px; margin: 0 0 32px; }
+  .pv-intro p:last-child { margin-bottom: 0; }
+  .pv-gauge { background: #1d1f45; border-radius: 16px; padding: 24px 26px; margin: 28px 0; }
+  .pv-gt { color: #ffffff; font-weight: 800; font-size: 16px; margin: 0 0 16px; }
+  .pv-track { height: 40px; background: rgba(255,255,255,0.1); border-radius: 8px; position: relative; overflow: hidden; margin-bottom: 8px; }
+  .pv-fill { height: 100%; width: 11%; background: #4175FC; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 12px; font-weight: 800; }
+  .pv-mark { position: absolute; top: 0; bottom: 0; width: 3px; background: #ffffff; left: 34%; }
+  .pv-labels { display: flex; justify-content: space-between; color: #a7adc4; font-size: 12px; font-weight: 700; }
+  .pv-verdict { margin-top: 16px; padding-top: 14px; border-top: 1px solid #343a63; color: #d8dbe8; font-size: 13px; line-height: 1.55; }
+  .pv-verdict b { color: #4175FC; }
+  .pv-case { border: 2px solid #e4e6ef; border-radius: 16px; padding: 18px 20px 16px; margin-bottom: 14px; }
+  .pv-case.pv-hard { border-color: #4175FC; }
+  .pv-ch { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: baseline; margin-bottom: 10px; }
+  .pv-cj { color: #1d1f45; font-weight: 800; font-size: 15px; }
+  .pv-cd { color: #76778b; font-size: 12.5px; font-weight: 700; }
+  .pv-cf { color: #41465e; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; }
+  .pv-cv { background: #f2f3f8; border-radius: 10px; padding: 10px 14px; color: #1d1f45; font-size: 13px; font-weight: 700; }
+  .pv-hard .pv-cv { background: #4175FC; color: #ffffff; }
+  .pv-bal { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+  .pv-pan { border-radius: 16px; padding: 20px 20px 16px; }
+  .pv-pl { background: #f2f3f8; }
+  .pv-pr { background: #1d1f45; }
+  .pv-pt { font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 12px; color: #76778b; }
+  .pv-pr .pv-pt { color: #8f93b5; }
+  .pv-li { font-size: 13px; line-height: 1.45; padding: 6px 0; color: #41465e; }
+  .pv-pr .pv-li { color: #d8dbe8; }
+  .pv-res { margin-top: 12px; padding-top: 10px; border-top: 1px solid #d9dbe6; font-size: 12.5px; font-weight: 800; color: #76778b; }
+  .pv-pr .pv-res { border-top-color: #343a63; color: #4175FC; }
+  .pv-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid #1d1f45; border-radius: 16px; overflow: hidden; margin: 28px 0; }
+  .pv-shead { grid-column: 1 / -1; background: #1d1f45; color: #ffffff; padding: 14px 20px; font-weight: 800; font-size: 14.5px; text-align: center; }
+  .pv-sc { padding: 18px 20px; }
+  .pv-sc.pv-taxed { background: #f2f3f8; border-left: 2px solid #e4e6ef; }
+  .pv-sl { color: #76778b; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; }
+  .pv-sv { font-size: 22px; font-weight: 800; margin-bottom: 6px; color: #4175FC; }
+  .pv-taxed .pv-sv { color: #1d1f45; }
+  .pv-sd { color: #41465e; font-size: 12.5px; line-height: 1.45; }
+  .pv-calc { background: #f2f3f8; border-radius: 16px; padding: 22px 24px; margin: 28px 0; }
+  .pv-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px dashed #d9dbe6; color: #41465e; font-size: 14px; }
+  .pv-row:last-child { border-bottom: 0; }
+  .pv-row b { color: #1d1f45; }
+  .pv-tot { background: #4175FC; color: #ffffff; border-radius: 10px; padding: 13px 16px; margin-top: 12px; display: flex; justify-content: space-between; font-weight: 800; font-size: 16px; }
+  .pv-fiche { border: 2px solid #4175FC; border-radius: 16px; overflow: hidden; margin: 28px 0; }
+  .pv-fh { background: #4175FC; color: #ffffff; padding: 12px 18px; font-weight: 800; font-size: 14px; }
+  .pv-fb { padding: 6px 18px 14px; }
+  .pv-fr { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #edeef4; font-size: 13.5px; color: #41465e; }
+  .pv-fr:last-child { border-bottom: 0; }
+  .pv-fr b { color: #1d1f45; }
+  .pv-cta { background: #f2f3f8; border-left: 5px solid #4175FC; border-radius: 0 14px 14px 0; padding: 22px 26px; margin: 30px 0; }
+  .pv-ctat { margin: 0 0 10px; font-weight: 800; color: #1d1f45; font-size: 16px; }
+  .pv-ctad { margin: 0 0 16px; font-size: 14.5px; color: #41465e; line-height: 1.55; }
+  .pv-btn { display: inline-block; background: #4175FC; color: #ffffff; font-weight: 700; font-size: 14.5px; padding: 12px 26px; border-radius: 26px; text-decoration: none; }
+  @media (max-width: 540px) {
+    .pv-intro { padding: 22px 18px 16px; } .pv-bal, .pv-split { grid-template-columns: 1fr; }
+  }
+</style>
+<div class="pv-wrap">
+
+<div class="pv-intro">
+  <p>Vendre sa résidence principale sans payer un euro d'impôt reste l'un des rares avantages fiscaux vraiment généreux. Pourtant, l'exonération de <strong>plus-value résidence principale</strong> n'a rien d'automatique, et l'administration la refuse de plus en plus souvent.</p>
+  <p>Or trois décisions de justice récentes montrent comment elle s'y prend. Surtout, l'une d'elles ajoute une majoration de 40 % à l'ardoise, ce qui change complètement le calcul du risque.</p>
+  <p>Ainsi, cet article détaille ces trois affaires, puis la fiche que l'administration tient sur chacun de vos biens.</p>
+</div>
+
+<h2>1. Plus-value résidence principale : le principe et ses limites</h2>
+
+<p>Rappelons d'abord la règle de la plus-value résidence principale. En effet, lorsque vous vendez votre résidence principale, vous ne payez ni impôt sur le revenu ni prélèvements sociaux sur le gain.</p>
+
+<p>Concrètement, un bien acheté 200 000 euros et revendu 350 000 euros vous laisse 150 000 euros nets. D'ailleurs, le prix d'acquisition retenu inclut vos frais d'achat, comme le détaille notre article sur <a href="https://www.calculfraisdenotaire.net/achat-immobilier-comment-calculer-les-frais-de-notaire/">le calcul des frais de notaire</a>. Par ailleurs, le code général des impôts pose ce principe sans condition de montant.</p>
+
+<h3>1.1. Plus-value résidence principale : aucune durée minimale dans la loi</h3>
+
+<p>Surtout, voilà le point que beaucoup ignorent. Aucun texte n'impose six mois, un an ou davantage pour bénéficier de l'exonération de plus-value résidence principale.</p>
+
+<p>Ainsi, même une occupation de quelques mois peut suffire dans certaines situations. Le blog <a href="https://www.locationcourteduree.fr/2026/09/10/residence-principale/" target="_blank" rel="noopener">locationcourteduree.fr</a> détaille les signaux que l'administration surveille chez les propriétaires bailleurs. Toutefois, cette souplesse attire logiquement les montages, et c'est exactement ce que l'administration traque désormais.</p>
+
+<h3>1.2. Ce que le fisc regarde vraiment pour la plus-value résidence principale</h3>
+
+<p>Avant tout, l'administration retient votre adresse réelle, pas celle que vous avez déclarée. En effet, elle sait parfaitement qu'un justificatif se fabrique, alors qu'une vie quotidienne laisse des traces objectives.</p>
+
+<p>De ce fait, le raisonnement s'appuie sur un faisceau d'indices : consommations d'énergie, mouvements bancaires, mobilier présent, traces de vie familiale. Précisément, ce sont ces éléments qui emportent la décision devant le juge.</p>
+
+<h2>2. Trois affaires récentes sur la plus-value résidence principale</h2>
+
+<p>Ces trois décisions sur la plus-value résidence principale datent de 2025 et 2026. Chacune éclaire un mécanisme différent. Pourtant, toutes se terminent par un refus d'exonération.</p>
+
+<h3>2.1. Affaire 1 : le studio parisien trahi par son compteur</h3>
+
+<p>Concrètement, un contribuable vend un studio de 13 m² à Paris en novembre 2016 et déclare sa résidence principale. Ensuite, l'administration contrôle, et il sort le grand jeu.</p>
+
+<p>En apparence, tout tient. Déclaration de revenus à cette adresse, courriers de l'administration, documents administratifs, relevés bancaires, appels de charges de copropriété.</p>
+
+<p>Pourtant, deux détails l'ont trahi. D'abord ses comptes bancaires, un crédit renouvelable et un livret d'épargne sans le moindre mouvement. Ensuite, et surtout, sa consommation d'électricité sur une année entière.</p>
+
+<div class="pv-gauge">
+  <div class="pv-gt">La consommation annuelle qui a fait basculer le dossier</div>
+  <div class="pv-track">
+    <div class="pv-fill">consommation relevée</div>
+    <div class="pv-mark"></div>
+  </div>
+  <div class="pv-labels"><span>0 kWh</span><span>Un simple réfrigérateur</span><span>Un logement occupé</span></div>
+  <div class="pv-verdict">Le juge a retenu une formule simple : cette facture démontre à elle seule que personne ne vit dans le logement. <b>Exonération refusée, plus-value taxée</b>, dix ans après la vente.</div>
+</div>
+
+<p>Notez toutefois l'absence de seuil légal. En effet, aucun texte ne fixe un nombre de kilowattheures en dessous duquel vous perdez l'exonération. Il s'agit donc d'un indice parmi d'autres, mais d'un indice très parlant.</p>
+
+<p>Par ailleurs, retenez l'argument que le contribuable croyait décisif. Vous déclarez une adresse, vous y recevez du courrier, puis vous produisez ce courrier comme preuve. Pourtant, ce raisonnement tourne en rond, et le juge ne s'y trompe pas.</p>
+
+<div class="pv-bal">
+  <div class="pv-pan pv-pl">
+    <div class="pv-pt">Ce que le contribuable produit</div>
+    <div class="pv-li">Déclaration de revenus à l'adresse</div>
+    <div class="pv-li">Courriers de l'administration</div>
+    <div class="pv-li">Relevés bancaires domiciliés</div>
+    <div class="pv-li">Appels de charges de copropriété</div>
+    <div class="pv-res">Des documents déclaratifs</div>
+  </div>
+  <div class="pv-pan pv-pr">
+    <div class="pv-pt">Ce que le juge regarde</div>
+    <div class="pv-li">Consommation d'électricité et d'eau</div>
+    <div class="pv-li">Mouvements réels sur les comptes</div>
+    <div class="pv-li">Mobilier et équipement du logement</div>
+    <div class="pv-li">Traces de vie familiale sur place</div>
+    <div class="pv-res">Des preuves d'occupation</div>
+  </div>
+</div>
+
+<h3>2.2. Affaire 2 : la mise en scène qui coûte 40 % de plus</h3>
+
+<p>Ensuite, cette deuxième décision date du 29 janvier 2026, devant la Cour administrative d'appel de Marseille. Un propriétaire revient habiter son bien juste avant de le vendre et change sa domiciliation alors que la vente est déjà engagée.</p>
+
+<p>Surtout, le juge n'a pas seulement regardé le calendrier. En effet, il a dressé un tableau d'ensemble où chaque élément renforce le précédent.</p>
+
+<div class="pv-case pv-hard">
+  <div class="pv-ch"><span class="pv-cj">Cour administrative d'appel de Marseille</span><span class="pv-cd">29 janvier 2026</span></div>
+  <div class="pv-cf">Une autre résidence restée entièrement disponible à côté, un changement d'adresse administratif au dernier moment, une consommation d'énergie dérisoire, un mobilier réduit au strict minimum, aucune trace de vie familiale et une mise en vente déjà engagée.</div>
+  <div class="pv-cv">Verdict : ce n'est pas une résidence principale, c'est une mise en scène. Exonération refusée, plus-value taxée, et majoration de 40 % pour manquement délibéré.</div>
+</div>
+
+<p>Cette majoration constitue la vraie nouveauté du contentieux sur la plus-value résidence principale. Autrefois, tenter le coup revenait à jouer un pari. En clair, l'administration ne voyait rien, ou vous régliez l'impôt normalement prévu. Désormais, le pari perdu se double d'une pénalité.</p>
+
+<div class="pv-calc">
+  <div class="pv-row"><span>Plus-value taxable</span><b>100 000 €</b></div>
+  <div class="pv-row"><span>Impôt sur le revenu et prélèvements sociaux, environ 36 %</span><b>36 000 €</b></div>
+  <div class="pv-row"><span>Majoration pour manquement délibéré, 40 %</span><b>+ 14 400 €</b></div>
+  <div class="pv-tot"><span>Coût total du pari perdu</span><span>50 400 €</span></div>
+</div>
+
+<p>Effectivement, le juge se montre explicite : ce propriétaire ne pouvait ignorer que ce logement n'était pas sa résidence principale. Ainsi, plaider la bonne foi devient très difficile face à un faisceau d'indices aussi net.</p>
+
+<h3>2.3. Affaire 3 : le divorce qui coupe la plus-value résidence principale en deux</h3>
+
+<p>Tout d'abord, un arrêt de Bordeaux de fin 2025 mérite votre attention. En effet, le juge y refuse l'exonération à un vendeur dont le bien restait inoccupé depuis dix-sept mois. Concrètement, l'administration tolère un délai d'environ un an entre le départ et la signature.</p>
+
+<p>Enfin, venons-en au cas du divorce, qui concerne beaucoup de couples. Par exemple, un conjoint quitte le logement, l'autre y reste, et la vente intervient deux ans plus tard au moment de la liquidation.</p>
+
+<p>La surprise vient du mode de calcul. En effet, l'administration apprécie l'exonération pour chaque vendeur séparément.</p>
+
+<div class="pv-split">
+  <div class="pv-shead">Même maison, même acte de vente, même jour</div>
+  <div class="pv-sc">
+    <div class="pv-sl">Le conjoint resté sur place</div>
+    <div class="pv-sv">0 € d'impôt</div>
+    <div class="pv-sd">Le logement constitue toujours sa résidence principale au jour de la vente, donc sa moitié échappe à l'imposition.</div>
+  </div>
+  <div class="pv-sc pv-taxed">
+    <div class="pv-sl">Le conjoint parti deux ans plus tôt</div>
+    <div class="pv-sv">Moitié taxée</div>
+    <div class="pv-sd">Il ne vit plus là depuis longtemps, donc sa part supporte l'impôt sur la plus-value et les prélèvements sociaux.</div>
+  </div>
+</div>
+
+<p>Des tolérances existent quand la vente intervient dans un délai raisonnable après la séparation. Nos <a href="https://www.calculfraisdenotaire.net/vendre-rapidement-astuces-pour-une-vente-immobiliere-reussie/">conseils pour vendre rapidement</a> prennent alors tout leur sens. Cependant, la leçon reste claire : en cas de séparation, la date de vente devient une décision fiscale à part entière, qui vaut parfois des dizaines de milliers d'euros.</p>
+
+<p>Précisons aussi un cas à part. Si vous avez loué le bien en meublé, la plus-value obéit à d'autres règles, notamment la réintégration des amortissements, expliquée sur <a href="https://www.declarationlmnp.fr/plus-value-lmnp-2026/" target="_blank" rel="noopener">declarationlmnp.fr</a>. Enfin, signalons une évolution possible. En effet, des députés ont proposé, dans le cadre du budget 2026, d'imposer cinq ans de détention minimum avant de bénéficier de l'exonération. Les députés ne l'ont pas adopté, et il prévoyait des exceptions pour les mutations, les divorces et les décès. Toutefois, sa réapparition pour la deuxième fois indique le sens du vent.</p>
+
+<h2>3. La fiche qui décide de votre plus-value résidence principale</h2>
+
+<p>Reste une question : comment l'administration sait-elle tout cela sur votre plus-value résidence principale ? Précisément, la réponse tient dans un service ouvert en 2023 sur impots.gouv.fr, appelé Gérer mes biens immobiliers.</p>
+
+<h3>3.1. Ce que contient votre fiche d'occupation</h3>
+
+<p>Concrètement, pour chaque bien que vous possédez, l'administration renseigne qui l'occupe, à quel titre et depuis quand. Ainsi, cette fiche constitue la colonne vertébrale de votre fiscalité immobilière.</p>
+
+<div class="pv-fiche">
+  <div class="pv-fh">Gérer mes biens immobiliers, les lignes à contrôler</div>
+  <div class="pv-fb">
+    <div class="pv-fr"><span>Nature d'occupation</span><b>Principale, secondaire, louée ou vacante</b></div>
+    <div class="pv-fr"><span>Identité des occupants</span><b>Vous, un locataire, un tiers</b></div>
+    <div class="pv-fr"><span>Dates d'entrée et de sortie</span><b>Depuis quand, jusqu'à quand</b></div>
+    <div class="pv-fr"><span>Surface pondérée retenue</span><b>Base de la taxe foncière</b></div>
+    <div class="pv-fr"><span>Dépendances comptabilisées</span><b>Garage, cave, terrasse, piscine</b></div>
+    <div class="pv-fr"><span>Catégorie de confort</span><b>Classement figé parfois depuis 1970</b></div>
+  </div>
+</div>
+
+<p>D'ailleurs, vos avis de taxe foncière et de taxe d'habitation partent de cette fiche. Par ailleurs, elle commande aussi la taxe sur les logements vacants, dont les majorations grimpent de 5 à 60 % en zone tendue.</p>
+
+<h3>3.2. Deux surveillances renforcées</h3>
+
+<p>Désormais, l'administration dispose de trois années supplémentaires de contrôle sur les résidences secondaires. Évidemment, ce n'est pas un hasard de calendrier.</p>
+
+<p>En outre, depuis 2026, même les occupants non propriétaires doivent déclarer les meublés qu'ils occupent en résidence secondaire. Désormais, le manquement entraîne 10 % de majoration, avec un minimum de 150 euros.</p>
+
+<h3>3.3. Une fiche fausse vous coûte cher dans les deux sens</h3>
+
+<p>En pratique, le problème se présente sous deux formes opposées, et toutes deux vous pénalisent.</p>
+
+<ul>
+  <li><strong>Fausse en votre défaveur</strong> : une taxe d'habitation réclamée à tort, une surface surévaluée, une dépendance démolie toujours comptée, une catégorie de confort inexacte. Vous payez trop, année après année, en silence.</li>
+  <li><strong>Fausse en votre faveur</strong> : c'est une bombe à retardement. Le jour de la vente, vous comptez sur l'exonération de plus-value résidence principale et vous récoltez un redressement, désormais assorti de 40 % de pénalité.</li>
+</ul>
+
+<p>Au final, la conclusion reste la même dans les deux cas. Donc vous devez savoir ce que contient cette fiche, et la plupart des propriétaires ne l'ont jamais consultée.</p>
+
+<h2>4. Trois étapes pour sécuriser votre plus-value résidence principale</h2>
+
+<h3>4.1. Étape 1 : consulter et figer l'état actuel</h3>
+
+<p>Tout d'abord, connectez-vous à votre espace sur impots.gouv.fr, ouvrez Gérer mes biens immobiliers et lisez chaque ligne. Ensuite, prenez des captures d'écran pour conserver une trace datée. De ce fait, le jour où vous contesterez, vous serez content de les avoir.</p>
+
+<h3>4.2. Étape 2 : comparer la fiche à la réalité</h3>
+
+<p>Cependant, c'est là que l'exercice se complique. En effet, la taxe foncière repose sur la surface pondérée, la catégorie de confort, les dépendances et la valeur locative cadastrale. Pourtant, ces données remontent souvent aux années 1970 et se transmettent d'un propriétaire à l'autre avec leurs erreurs.</p>
+
+<p>Or refaire ce calcul à la main suppose de maîtriser le barème communal et les coefficients de pondération. Heureusement, un outil s'en charge. Notre article détaillé sur <a href="https://www.calculfraisdenotaire.net/contester-taxe-fonciere/">la méthode pour contester sa taxe foncière</a> explique la mécanique complète.</p>
+
+<div class="pv-cta">
+  <p class="pv-ctat">Vérifiez votre taxe foncière gratuitement</p>
+  <p class="pv-ctad">Déposez votre avis ou votre fiche d'évaluation. Le recalcul et le diagnostic ne coûtent rien. Vous ne payez que si une anomalie apparaît et que vous souhaitez la réclamation rédigée pour vous.</p>
+  <a class="pv-btn" href="https://www.verifoncier.fr/" target="_blank" rel="noopener">Vérifier ma taxe foncière</a>
+</div>
+
+<h3>4.3. Étape 3 : agir dans les délais</h3>
+
+<p>Concrètement, la taxe foncière 2026 se règle autour de la mi-octobre. Ensuite, pour réclamer un dégrèvement, vous avez jusqu'à la fin de l'année suivante, soit le 31 décembre 2027.</p>
+
+<p>Au final, passé ce délai, la porte se referme même si vous aviez raison. De ce fait, chaque année qui passe sans vérification représente une année de trop-payé définitivement perdue.</p>
+
+<h2>5. Questions fréquentes sur la plus-value résidence principale</h2>
+
+<h3>5.1. Combien de temps habiter un bien pour exonérer la plus-value résidence principale ?</h3>
+
+<p>Aucune durée minimale ne figure dans la loi. En revanche, l'occupation doit rester effective et habituelle, ce que l'administration vérifie par un faisceau d'indices. Ainsi, une occupation courte mais réelle reste défendable, une domiciliation de façade ne l'est pas.</p>
+
+<h3>5.2. Puis-je déménager avant de vendre sans perdre la plus-value résidence principale ?</h3>
+
+<p>Oui, à condition de vendre dans un délai normal. En pratique, l'administration retient environ un an. Par exemple, un arrêt de Bordeaux refuse l'exonération pour un bien inoccupé dix-sept mois avant la signature.</p>
+
+<h3>5.3. Que se passe-t-il en cas de divorce ?</h3>
+
+<p>L'administration apprécie l'exonération séparément pour chaque vendeur. Ainsi, l'occupant du logement au jour de la vente échappe à l'impôt sur sa moitié. À l'inverse, celui qui a quitté les lieux depuis longtemps paie sur la sienne. Toutefois, des tolérances existent lorsque la vente suit rapidement la séparation.</p>
+
+<h3>5.4. Une facture d'électricité peut-elle vraiment faire perdre l'exonération ?</h3>
+
+<p>Elle ne suffit jamais à elle seule, mais elle pèse lourd. Notamment, dans l'affaire parisienne, la consommation annuelle se situait sous celle d'un simple réfrigérateur, ce qui a suffi au juge pour conclure à une occupation occasionnelle.</p>
+
+<h3>5.5. Comment savoir si ma fiche d'occupation est correcte ?</h3>
+
+<p>Consultez-la dans votre espace impots.gouv.fr, rubrique Gérer mes biens immobiliers, puis comparez chaque ligne à la réalité de votre logement. Ensuite, pour la partie surface et dépendances, un recalcul automatisé repère les anomalies bien plus vite qu'une lecture à l'œil.</p>
+
+<h2>Conclusion : ce qu'il faut retenir sur la plus-value résidence principale</h2>
+
+<p>L'exonération de plus-value résidence principale reste entière, mais elle se démontre. Ainsi, ce sont vos consommations, vos mouvements bancaires et votre mobilier qui font foi, pas vos courriers.</p>
+
+<p>Surtout, la majoration de 40 % change l'équation. Désormais, un montage raté ne coûte plus seulement l'impôt normalement dû, il coûte 40 % de plus. Enfin, la fiche que l'administration tient sur vos biens mérite une lecture attentive, dans un sens comme dans l'autre. En effet, elle décide autant de votre taxe foncière annuelle que de votre exonération le jour de la vente.</p>
+
+<p>Vous envisagez un achat immobilier ? Calculez précisément votre budget avec notre <a href="https://www.calculfraisdenotaire.net/">simulateur de frais de notaire sur calculfraisdenotaire.net</a>.</p>
+
+</div>
