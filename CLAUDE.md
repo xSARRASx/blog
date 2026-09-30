@@ -46,6 +46,40 @@ Ce fichier consigne les règles, apprentissages et historique pour accélérer l
 - **Intégrité contenu (testé 31/07/2026)** : `<style>` et `<script>` sont préservés dans content.raw (compte admin = unfiltered_html OK). Auth testée OK (martin, administrator). Upload media + alt_text OK. Catégories dispo : Location courte durée=4, Conciergerie=88, Sous-location=62, Investissement locatif=53, Immobilier=52, Fiscalité=90.
 - **Rendu** : les anciens articles sont en widget HTML Elementor ; les articles API partent en contenu classique (HTML self-contained). Vérifier le rendu du 1er brouillon dans le thème avant de généraliser (brouillon test 10355 créé le 31/07 pour validation visuelle par Martin).
 
+## 1quater. MAILLAGE CROISÉ ENTRE LES SITES (demande de Martin, 30/09/2026)
+
+**RÈGLE : chaque article doit « aider » les autres sites de l'écosystème.** Dès qu'un sujet touche au périmètre d'un autre site, poser un lien vers lui.
+
+### Les 5 sites de l'écosystème et leur rôle
+
+| Site | Rôle | Quand y renvoyer |
+|---|---|---|
+| `locationcourteduree.fr` | Blog expert, pédagogique | Explication de fond sur la LCD, la fiscalité du meublé, le marché |
+| `guestlucky.com` | SaaS : channel manager + ERP ménage + Lucky Cover | Gestion opérationnelle de la courte durée, équipes, annonces, assurance |
+| `declarationlmnp.fr` | Logiciel de liasse LMNP au réel (247 €, paiement unique) | Régime réel, liasse 2031/2033, amortissements, passage micro vers réel |
+| `calculfraisdenotaire.net` | Simulateur de frais de notaire + blog | Achat, frais d'acquisition, acte notarié, prix de revient d'un bien |
+| `verifoncier.fr` | Vérification de la taxe foncière (diagnostic gratuit, réclamation 19,90 €) | Taxe foncière, valeur locative cadastrale, anomalies de surface |
+
+### Déclencheurs automatiques
+
+- On parle de **taxe foncière** → lien vers `verifoncier.fr`
+- On parle de **frais de notaire / prix d'acquisition** → lien vers `calculfraisdenotaire.net`
+- On parle de **liasse fiscale, régime réel, amortissements** → lien vers `declarationlmnp.fr`
+- On parle de **gestion de la courte durée, ménage, annonces** → lien vers `guestlucky.com`
+- On a besoin d'une **explication de fond** → lien vers l'article correspondant de `locationcourteduree.fr`
+
+### PIÈGE SEO À NE PAS OUBLIER
+
+Un lien vers un AUTRE domaine est un lien **EXTERNE** pour Yoast, même si les deux sites appartiennent à Sébastien.
+
+- Liens croisés inter-sites : **avec** `target="_blank" rel="noopener"`, et ils NE comptent PAS dans le maillage interne
+- Il faut donc TOUJOURS garder **2 à 4 liens internes au site courant EN PLUS** des liens croisés, sinon Yoast passe au rouge sur « Maillage interne »
+- Contrôle : `python3 .robot-blog/check-seo.py <fichier> "<mot-clé>" [wrapper|none] [domaine]` où le 4e argument est le domaine DU SITE COURANT. La ligne `LIENS INTERNES` doit rester >= 2 et `INTERNES _blank` à 0.
+
+### Dosage
+
+Viser **1 à 3 liens croisés par article**, placés là où ils rendent vraiment service au lecteur. Ne jamais empiler les cinq sites dans un même paragraphe : cela ressemble à une ferme de liens et dessert le référencement.
+
 ## 1ter. MESSAGES VOCAUX DE MARTIN : transcription Whisper (procédure validée, 11/08/2026)
 
 Martin envoie souvent des messages vocaux. À transcrire systématiquement avant d'y répondre.
