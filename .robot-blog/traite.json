@@ -118,6 +118,20 @@
       "article": "article-lmnp-2027.html",
       "wp_post_id": 10396,
       "note": "transcription recuperee automatiquement (1er succes yt-dlp depuis le 24/08)"
+    },
+    {
+      "id": "2X1pWkzGvp8",
+      "date_traitement": "2026-10-05",
+      "article": "article-conciergerie-airbnb.html",
+      "wp_post_id": 10401,
+      "note": "video du mercredi 30/09 ; sous-titres absents le 01/10, disponibles (piste fr) le 05/10"
+    },
+    {
+      "id": "bysfkU90VQI",
+      "date_traitement": "2026-10-05",
+      "article": "article-amortissement-lmnp.html",
+      "wp_post_id": 10399,
+      "note": "transcription recuperee automatiquement a la relance de 14h"
     }
   ]
 }
