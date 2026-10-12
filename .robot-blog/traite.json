@@ -132,6 +132,13 @@
       "article": "article-amortissement-lmnp.html",
       "wp_post_id": 10399,
       "note": "transcription recuperee automatiquement a la relance de 14h"
+    },
+    {
+      "id": "soj5bEyLcKE",
+      "date_traitement": "2026-10-12",
+      "article": "article-photos-airbnb.html",
+      "wp_post_id": 10403,
+      "note": "transcription automatique ; image = miniature YouTube (cle Gemini refusee en 401)"
     }
   ]
 }
