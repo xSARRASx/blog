@@ -146,6 +146,13 @@
       "article": "article-plus-value-immobiliere.html",
       "wp_post_id": 10407,
       "note": "yt-dlp bloque ; transcription obtenue via l'API Gemini (file_uri YouTube), script .robot-blog/transcrire-gemini.py"
+    },
+    {
+      "id": "J9XrIi1qWPU",
+      "date_traitement": "2026-10-22",
+      "article": "article-tva-airbnb.html",
+      "wp_post_id": 10409,
+      "note": "transcription yt-dlp OK du premier coup (fr-orig)"
     }
   ]
 }
