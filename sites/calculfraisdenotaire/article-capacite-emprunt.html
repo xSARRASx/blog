@@ -1,0 +1,234 @@
+<style>
+  .ce-wrap { font-family: inherit; }
+  .ce-intro { background: #f2f3f8; border-radius: 16px; padding: 28px 30px 20px; margin: 0 0 32px; }
+  .ce-intro p:last-child { margin-bottom: 0; }
+  .ce-gap { background: #1d1f45; border-radius: 16px; padding: 24px 26px 20px; margin: 28px 0; }
+  .ce-gt { color: #ffffff; font-weight: 800; font-size: 16px; margin: 0 0 18px; }
+  .ce-bl { color: #a7adc4; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px; }
+  .ce-track { height: 38px; background: rgba(255,255,255,0.08); border-radius: 8px; margin-bottom: 14px; overflow: hidden; }
+  .ce-bar { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; color: #ffffff; font-weight: 800; font-size: 14px; box-sizing: border-box; }
+  .ce-state { width: 100%; background: #4175FC; }
+  .ce-bank { width: 67%; background: #8f93b5; }
+  .ce-note { color: #d8dbe8; font-size: 13px; line-height: 1.55; margin-top: 6px; padding-top: 14px; border-top: 1px solid #343a63; }
+  .ce-note b { color: #4175FC; }
+  .ce-ladder { border: 2px solid #e4e6ef; border-radius: 16px; padding: 22px 22px 16px; margin: 28px 0; }
+  .ce-lt { color: #1d1f45; font-weight: 800; font-size: 15.5px; margin: 0 0 4px; }
+  .ce-ls { color: #76778b; font-size: 12.5px; margin: 0 0 16px; }
+  .ce-step { display: grid; grid-template-columns: 70px 1fr; gap: 12px; align-items: center; margin-bottom: 12px; }
+  .ce-rate { color: #1d1f45; font-weight: 800; font-size: 17px; text-align: right; }
+  .ce-house { height: 44px; border-radius: 10px; background: #f2f3f8; position: relative; overflow: hidden; }
+  .ce-fill { position: absolute; left: 0; top: 0; bottom: 0; background: #1d1f45; display: flex; align-items: center; padding-left: 14px; color: #ffffff; font-weight: 800; font-size: 14px; }
+  .ce-fill span { color: #a7adc4; font-weight: 700; font-size: 12px; margin-left: 8px; }
+  .ce-fill.ce-blue { background: #4175FC; }
+  .ce-fill.ce-blue span { color: #e3e9ff; }
+  .ce-stack { background: #f2f3f8; border-radius: 16px; padding: 22px 22px 18px; margin: 28px 0; }
+  .ce-srow { margin-bottom: 16px; }
+  .ce-sh { display: flex; justify-content: space-between; color: #1d1f45; font-weight: 800; font-size: 14px; margin-bottom: 6px; }
+  .ce-sh span { color: #4175FC; }
+  .ce-sbar { display: flex; height: 30px; border-radius: 8px; overflow: hidden; }
+  .ce-p { background: #1d1f45; }
+  .ce-f { background: #8f93b5; }
+  .ce-i { background: #4175FC; }
+  .ce-leg { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; }
+  .ce-leg span { display: inline-flex; align-items: center; gap: 6px; color: #41465e; font-size: 12.5px; font-weight: 700; }
+  .ce-leg i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; }
+  .ce-duel { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid #1d1f45; border-radius: 16px; overflow: hidden; margin: 28px 0; }
+  .ce-dhead { grid-column: 1 / -1; background: #1d1f45; color: #ffffff; padding: 14px 20px; font-weight: 800; font-size: 14.5px; text-align: center; }
+  .ce-dc { padding: 18px 20px; }
+  .ce-dc.ce-win { background: #f2f3f8; border-left: 2px solid #e4e6ef; }
+  .ce-dl { color: #76778b; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 8px; }
+  .ce-dv { color: #1d1f45; font-size: 26px; font-weight: 800; margin: 0 0 4px; }
+  .ce-win .ce-dv { color: #4175FC; }
+  .ce-dd { color: #41465e; font-size: 13px; line-height: 1.5; margin: 0; }
+  .ce-dfoot { grid-column: 1 / -1; background: #4175FC; color: #ffffff; padding: 12px 18px; font-size: 13.5px; font-weight: 700; text-align: center; }
+  .ce-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+  .ce-col { border-radius: 16px; padding: 18px 16px 14px; }
+  .ce-c1 { background: #f2f3f8; }
+  .ce-c2 { background: #ffffff; border: 2px solid #e4e6ef; }
+  .ce-c3 { background: #1d1f45; }
+  .ce-ch { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; color: #76778b; margin-bottom: 10px; }
+  .ce-c3 .ce-ch { color: #8f93b5; }
+  .ce-city { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; padding: 6px 0; border-bottom: 1px dashed #d9dbe6; color: #1d1f45; font-weight: 700; }
+  .ce-city span { color: #4175FC; white-space: nowrap; }
+  .ce-c3 .ce-city { color: #ffffff; border-bottom-color: #343a63; }
+  .ce-check { counter-reset: cec; margin: 28px 0; }
+  .ce-item { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; background: #f2f3f8; border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
+  .ce-num { width: 40px; height: 40px; border-radius: 50%; background: #4175FC; color: #ffffff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; }
+  .ce-it { color: #1d1f45; font-weight: 800; font-size: 14.5px; margin: 0 0 2px; }
+  .ce-id { color: #41465e; font-size: 13px; line-height: 1.5; margin: 0; }
+  @media (max-width: 540px) {
+    .ce-intro { padding: 22px 20px 16px; }
+    .ce-duel, .ce-cols { grid-template-columns: 1fr; }
+    .ce-dc.ce-win { border-left: none; border-top: 2px solid #e4e6ef; }
+    .ce-step { grid-template-columns: 52px 1fr; }
+    .ce-fill { font-size: 12.5px; padding-left: 10px; }
+    .ce-fill span { display: none; }
+  }
+</style>
+<div class="ce-wrap">
+
+<div class="ce-intro">
+  <p>En quelques jours, l'État français a emprunté à 5 %, puis à 5,14 % sur dix ans. Pourtant, votre banque vous prête encore autour de 3,4 %. Or cet écart ne durera pas. Surtout, il pèsera directement sur votre <strong>capacité d'emprunt</strong>, donc sur le prix du bien accessible.</p>
+  <p>Ainsi, cet article reprend l'analyse de l'investisseur Sébastien More. Tout d'abord, il explique pourquoi les taux vont remonter. Ensuite, il chiffre ce qu'un demi-point de taux retire à votre budget, frais de notaire compris.</p>
+  <p>Enfin, il montre comment la négociation vous permet de récupérer ce que la hausse des taux vous prend.</p>
+</div>
+
+<h2>1. Capacité d'emprunt : pourquoi les taux vont remonter</h2>
+
+<p>Avant tout, votre capacité d'emprunt dépend de trois éléments : vos revenus, la durée du prêt et le taux. Or, le taux de votre crédit suit, avec quelques mois de retard, celui auquel l'État emprunte.</p>
+
+<h3>1.1. L'État emprunte plus cher que vous</h3>
+
+<p>Depuis 2000, le taux du crédit immobilier dépassait toujours celui de l'État, d'environ un point. En effet, la banque se finance à peu près au prix de l'État, puis ajoute sa marge. Pourtant, depuis deux ans, la situation a basculé.</p>
+
+<div class="ce-gap">
+  <p class="ce-gt">Le monde à l'envers : la banque prête moins cher que l'État n'emprunte</p>
+  <p class="ce-bl">Emprunt de l'État à 10 ans</p>
+  <div class="ce-track"><div class="ce-bar ce-state">5,14 %</div></div>
+  <p class="ce-bl">Crédit immobilier moyen, mi-octobre</p>
+  <div class="ce-track"><div class="ce-bar ce-bank">3,43 %</div></div>
+  <p class="ce-note">Historiquement, le crédit se situait <b>un point au-dessus</b> de l'État. Aujourd'hui, il se trouve presque deux points en dessous. Or les banques ne peuvent pas rogner leurs marges indéfiniment.</p>
+</div>
+
+<p>Concrètement, les banques ont réduit leurs marges pour garder leurs clients. Désormais, selon l'Observatoire Crédit Logement, elles arbitrent en faveur de leurs fonds propres. Autrement dit, la remontée a commencé.</p>
+
+<h3>1.2. Ce que prévoient les observateurs pour votre capacité d'emprunt</h3>
+
+<p>D'ailleurs, les chiffres montrent déjà la tendance. Le taux moyen grimpe de 3,16 % en décembre 2025 à 3,40 % en septembre 2026, puis à 3,43 % mi-octobre. De plus, l'Observatoire Crédit Logement prévoit 3,55 % fin 2026 et 3,85 % fin 2027.</p>
+
+<p>Toutefois, ces prévisions datent d'avant le passage de l'emprunt d'État à 5 %. Ainsi, un économiste d'Allianz Trade évoque plutôt 4 % dès le premier trimestre 2027. Surtout, ce niveau suppose que l'État reste à 5 %. Les 4 % constituent donc un plancher, et non un plafond.</p>
+
+<h3>1.3. Des signes déjà visibles sur la capacité d'emprunt</h3>
+
+<p>Par ailleurs, la durée moyenne des crédits atteint 21 ans, un record. De même, un prêt sur deux dure 25 ans ou plus. En clair, les banques allongent les durées pour faire passer les mensualités. De plus, la demande de crédit se situe 20 % sous sa moyenne des quinze dernières années.</p>
+
+<p>Enfin, le taux d'usure, le maximum légal, se calcule sur le trimestre précédent. Donc, quand les taux montent, il prend du retard. Résultat : les banques refusent des dossiers qui passaient trois mois plus tôt, comme en 2023.</p>
+
+<h2>2. Ce qu'un demi-point de taux retire à votre capacité d'emprunt</h2>
+
+<p>Par exemple, prenons un cas simple : un bien à 160 000 euros, financé sur 20 ans sans apport. Ensuite, regardons ce que deviennent la mensualité et le budget quand le taux monte.</p>
+
+<h3>2.1. Même mensualité, trois niveaux de capacité d'emprunt</h3>
+
+<p>Concrètement, au taux de septembre, 3,4 %, ce prêt coûte environ 920 euros par mois. Par conséquent, si votre budget mensuel s'arrête à 920 euros, votre capacité d'emprunt diminue à chaque hausse de taux.</p>
+
+<div class="ce-ladder">
+  <p class="ce-lt">Avec 920 euros par mois sur 20 ans, vous pouvez acheter</p>
+  <p class="ce-ls">Prix finançable selon le taux du crédit, hors apport et hors frais</p>
+  <div class="ce-step"><span class="ce-rate">3,4 %</span><div class="ce-house"><div class="ce-fill" style="width:100%;">160 000 €<span>septembre 2026</span></div></div></div>
+  <div class="ce-step"><span class="ce-rate">4 %</span><div class="ce-house"><div class="ce-fill" style="width:95%;">152 000 €<span>- 5 %, début 2027</span></div></div></div>
+  <div class="ce-step"><span class="ce-rate">4,5 %</span><div class="ce-house"><div class="ce-fill ce-blue" style="width:91%;">145 000 €<span>- 9 %, si l'État reste à 5 %</span></div></div></div>
+</div>
+
+<p>Ainsi, chaque demi-point de taux retire 4 à 5 % à votre capacité d'emprunt. Autrement dit, à mensualité égale, vous devez viser un bien moins cher, ou une surface plus petite.</p>
+
+<h3>2.2. Le coût complet de l'achat, frais de notaire compris</h3>
+
+<p>Par ailleurs, la mensualité ne dit pas tout. En effet, il faut aussi compter les frais de notaire, soit environ 7 à 8 % du prix dans l'ancien. Ensuite, s'ajoutent les intérêts payés sur la durée du prêt.</p>
+
+<div class="ce-stack">
+  <div class="ce-srow"><div class="ce-sh">Crédit à 3,4 %<span>environ 233 500 €</span></div><div class="ce-sbar"><div class="ce-p" style="width:68.5%;"></div><div class="ce-f" style="width:5.5%;"></div><div class="ce-i" style="width:26%;"></div></div></div>
+  <div class="ce-srow"><div class="ce-sh">Crédit à 4 %<span>environ 245 500 €</span></div><div class="ce-sbar"><div class="ce-p" style="width:65.2%;"></div><div class="ce-f" style="width:5.2%;"></div><div class="ce-i" style="width:29.6%;"></div></div></div>
+  <div class="ce-srow"><div class="ce-sh">Crédit à 4,5 %<span>environ 255 700 €</span></div><div class="ce-sbar"><div class="ce-p" style="width:62.6%;"></div><div class="ce-f" style="width:5%;"></div><div class="ce-i" style="width:32.4%;"></div></div></div>
+  <div class="ce-leg"><span><i class="ce-p"></i>Prix du bien : 160 000 €</span><span><i class="ce-f"></i>Frais de notaire : environ 12 800 €</span><span><i class="ce-i"></i>Intérêts sur 20 ans</span></div>
+</div>
+
+<p>Concrètement, les intérêts passent d'environ 60 700 euros à 3,4 % à près de 82 900 euros à 4,5 %. Ainsi, le même logement coûte environ 22 000 euros de plus sur la durée du prêt. Pour chiffrer précisément vos frais d'acquisition, notre article sur <a href="https://www.calculfraisdenotaire.net/achat-immobilier-comment-calculer-les-frais-de-notaire/">le calcul des frais de notaire</a> détaille chaque poste.</p>
+
+<h3>2.3. Attendre une baisse des prix ne sauve pas votre capacité d'emprunt</h3>
+
+<p>Certes, beaucoup d'acheteurs préfèrent attendre une baisse des prix. Pourtant, selon les notaires, les prix ne reculent que de 0,8 % par an en moyenne. Donc, il faudrait environ six ans de baisse pour compenser une simple hausse du crédit à 4 %. Pendant ce temps, l'emprunt d'État vient de prendre un point en trois mois.</p>
+
+<h2>3. Négocier pour retrouver de la capacité d'emprunt</h2>
+
+<p>Heureusement, un levier compense la hausse des taux : la négociation. En effet, avec des délais de vente qui s'allongent, les vendeurs acceptent plus facilement une remise.</p>
+
+<h3>3.1. L'effet double d'une négociation sur votre capacité d'emprunt</h3>
+
+<div class="ce-duel">
+  <div class="ce-dhead">Même logement, deux façons de l'acheter</div>
+  <div class="ce-dc"><p class="ce-dl">Aujourd'hui, au prix affiché</p><p class="ce-dv">920 € / mois</p><p class="ce-dd">160 000 euros à 3,4 % sur 20 ans, sans négociation.</p></div>
+  <div class="ce-dc ce-win"><p class="ce-dl">Début 2027, avec 8 % de remise</p><p class="ce-dv">892 € / mois</p><p class="ce-dd">147 200 euros à 4 % sur 20 ans : la mensualité baisse malgré la hausse du taux.</p></div>
+  <div class="ce-dfoot">Bonus : les frais de notaire baissent aussi, d'environ 1 000 euros, car ils se calculent sur le prix.</div>
+</div>
+
+<p>Précisément, une remise de 8 % compense davantage qu'une hausse d'un demi-point de taux. De plus, les frais de notaire se calculent sur le prix de vente. Donc, chaque euro négocié réduit aussi ces frais. Vous pouvez le vérifier en saisissant les deux prix dans notre simulateur.</p>
+
+<h3>3.2. Repérer les vendeurs prêts à négocier</h3>
+
+<p>Tout d'abord, regardez depuis combien de temps le bien est en vente. Par exemple, à Paris, le délai moyen avoisine 100 jours selon Century 21. De même, à Rennes, il a pris 40 jours en un an. Surtout, au-delà de 100 jours en ligne, un vendeur accepte souvent 5 à 8 % de moins.</p>
+
+<h3>3.3. Le bon prix de référence : les actes, pas les annonces</h3>
+
+<p>Ensuite, appuyez votre offre sur les prix réellement signés chez le notaire. À Nantes, par exemple, un baromètre d'annonces affichait + 4,2 % au printemps, alors que les actes reculaient de 3,1 %. Autrement dit, les annonces montrent ce que les vendeurs espèrent, et les actes ce que les acheteurs paient vraiment.</p>
+
+<h2>4. Où votre capacité d'emprunt va le plus loin</h2>
+
+<p>Précisément, d'après les actes signés au premier semestre 2026, analysés par Sébastien More, les grandes villes se répartissent en trois groupes. Ainsi, selon la ville visée, votre capacité d'emprunt vous donne plus ou moins de marge de négociation.</p>
+
+<div class="ce-cols">
+  <div class="ce-col ce-c1"><p class="ce-ch">La baisse continue</p><div class="ce-city">Nantes<span>3 280 €</span></div><div class="ce-city">Bordeaux<span>4 040 €</span></div><div class="ce-city">Lyon<span>4 420 €</span></div></div>
+  <div class="ce-col ce-c2"><p class="ce-ch">Marché plat</p><div class="ce-city">Paris<span>9 770 €</span></div><div class="ce-city">Toulouse<span>3 330 €</span></div><div class="ce-city">Montpellier<span>3 360 €</span></div><div class="ce-city">Rennes<span>3 630 €</span></div></div>
+  <div class="ce-col ce-c3"><p class="ce-ch">Les prix montent</p><div class="ce-city">Nice<span>4 940 €</span></div><div class="ce-city">Marseille<span>3 230 €</span></div><div class="ce-city">Lille<span>3 660 €</span></div></div>
+</div>
+
+<h3>4.1. Grandes villes : où négocier le plus</h3>
+
+<p>Tout d'abord, dans le premier groupe, Nantes, Bordeaux et Lyon, les prix des actes reculent encore ou viennent de se stabiliser. Donc, la négociation y reste la plus facile. À l'inverse, à Nice, beaucoup d'acheteurs paient sans crédit. Ainsi, la hausse des taux les touche peu, et les vendeurs cèdent moins.</p>
+
+<p>Quant aux marchés plats, comme Paris ou Toulouse, attendre une baisse ne sert à rien. En revanche, les délais de vente longs y offrent de vraies marges de discussion. Pour une lecture complète du marché, notre partenaire locationcourteduree.fr détaille <a href="https://www.locationcourteduree.fr/2026/09/17/marche-immobilier-2026/" target="_blank" rel="noopener">les chiffres du marché immobilier</a>.</p>
+
+<h3>4.2. Les villes moyennes, plus favorables à votre capacité d'emprunt</h3>
+
+<p>Par ailleurs, les taux poussent les primo-accédants vers les villes moyennes. En effet, 1 000 euros par mois y achètent encore environ 70 mètres carrés. D'ailleurs, la campagne a pris 6,1 % depuis janvier, contre 1,2 % pour les métropoles. Dans les actes, Brest progresse de 6,7 %, Le Mans de 3,6 % et Rouen de 2,5 %.</p>
+
+<h2>5. Vendre pour racheter sans perdre de capacité d'emprunt</h2>
+
+<p>Par ailleurs, si vous devez vendre pour financer votre prochain achat, le calendrier compte aussi. En effet, vos propres acheteurs subissent la même hausse des taux.</p>
+
+<div class="ce-check">
+  <div class="ce-item"><div class="ce-num">1</div><div><p class="ce-it">Affichez le prix des actes de votre quartier</p><p class="ce-id">Un prix d'annonce trop haut vous fait perdre 100 jours, puis vous oblige à baisser sous les yeux de tous.</p></div></div>
+  <div class="ce-item"><div class="ce-num">2</div><div><p class="ce-it">Vendez avant le printemps si vous le pouvez</p><p class="ce-id">Vos acheteurs ont perdu environ 4 % de capacité d'emprunt en un an, et en perdront autant d'ici là.</p></div></div>
+  <div class="ce-item"><div class="ce-num">3</div><div><p class="ce-it">Vérifiez la fiscalité de votre vente</p><p class="ce-id">L'exonération de votre résidence principale se prouve : préparez vos justificatifs d'occupation.</p></div></div>
+  <div class="ce-item"><div class="ce-num">4</div><div><p class="ce-it">Chiffrez les charges du futur logement</p><p class="ce-id">Taxe foncière et charges réduisent ce qui reste chaque mois pour rembourser le crédit.</p></div></div>
+</div>
+
+<h3>5.1. Vendre au bon prix, au bon moment</h3>
+
+<p>Tout d'abord, fixez votre prix sur les actes de votre quartier, et non sur les annonces voisines. Sinon, une baisse publique signalera un vendeur prêt à céder davantage. Ensuite, si vous vendez votre résidence principale, préparez la preuve de votre occupation. D'ailleurs, notre article sur <a href="https://www.calculfraisdenotaire.net/plus-value-residence-principale/">la plus-value de la résidence principale</a> montre comment le fisc la conteste.</p>
+
+<h3>5.2. Intégrer la taxe foncière à votre budget</h3>
+
+<p>Enfin, la taxe foncière du futur logement réduit ce qui reste chaque mois pour rembourser. Or, elle repose sur des données parfois anciennes et erronées. Avant de signer, demandez donc le dernier avis au vendeur. Ensuite, lisez notre méthode pour <a href="https://www.calculfraisdenotaire.net/contester-taxe-fonciere/">contester une taxe foncière</a> si le montant vous paraît excessif.</p>
+
+<h2>6. Questions fréquentes sur la capacité d'emprunt</h2>
+
+<h3>6.1. Comment calculer sa capacité d'emprunt ?</h3>
+
+<p>Tout d'abord, partez de la mensualité que votre budget supporte, en général un tiers de vos revenus nets. Ensuite, appliquez le taux et la durée du prêt. Par exemple, 920 euros par mois sur 20 ans à 3,4 % financent environ 160 000 euros.</p>
+
+<h3>6.2. Quel taux de crédit prévoir pour 2027 ?</h3>
+
+<p>Selon un économiste d'Allianz Trade, le crédit pourrait atteindre 4 % dès le premier trimestre 2027. Toutefois, ce niveau suppose que l'État continue d'emprunter autour de 5 %.</p>
+
+<h3>6.3. Combien un demi-point de taux fait-il perdre ?</h3>
+
+<p>En pratique, environ 4 à 5 % de capacité d'emprunt. Ainsi, à mensualité égale, un budget de 160 000 euros à 3,4 % tombe à 152 000 euros à 4 %.</p>
+
+<h3>6.4. Vaut-il mieux attendre que les prix baissent ?</h3>
+
+<p>Non, selon Sébastien More. En effet, les prix baissent de 0,8 % par an en moyenne. Or chaque demi-point de taux coûte 4 à 5 % de budget. Mieux vaut donc négocier dès maintenant.</p>
+
+<h3>6.5. La négociation fait-elle baisser les frais de notaire ?</h3>
+
+<p>Oui, car les frais de notaire se calculent sur le prix de vente. Ainsi, une remise de 12 800 euros réduit aussi les frais d'environ 1 000 euros dans l'ancien.</p>
+
+<h2>Conclusion : ce qu'il faut retenir sur la capacité d'emprunt</h2>
+
+<p>En résumé, l'État emprunte à 5 %, et votre banque ne pourra pas rester durablement à 3,4 %. Ainsi, votre capacité d'emprunt va baisser, d'environ 4 à 5 % par demi-point de taux.</p>
+
+<p>Pourtant, attendre une baisse des prix ne compense pas cette perte. En revanche, la négociation, appuyée sur les prix des actes et sur les délais de vente, vous permet de la récupérer. Surtout, elle réduit aussi vos frais de notaire.</p>
+
+<p>Vous envisagez un achat immobilier ? Calculez précisément votre budget avec notre <a href="https://www.calculfraisdenotaire.net/">simulateur de frais de notaire sur calculfraisdenotaire.net</a>.</p>
+
+</div>
