@@ -117,3 +117,9 @@ Dans Articles, cherche « Règles Airbnb ». Si un article de ce titre existe d�
 ÉTAPE 5 : CONTRÔLE PUIS PUBLICATION
 Prévisualise : titres orange, encadrés colorés, vidéo, FAQ, aucun code HTML brut à l'écran. Si tout est bon, clique sur Publier et donne-moi l'URL publique.
 ```
+
+---
+
+## BLOC UNIQUE (29/10/2026) : les 3 articles à la suite, sans pause
+
+Voir le message du 29/10 dans la conversation : même contenu que les blocs A, C et B, enchaînés.
