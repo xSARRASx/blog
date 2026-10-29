@@ -153,6 +153,22 @@
       "article": "article-tva-airbnb.html",
       "wp_post_id": 10409,
       "note": "transcription yt-dlp OK du premier coup (fr-orig)"
+    },
+    {
+      "id": "_bR52Hhc91Q",
+      "date_traitement": "2026-10-29",
+      "article": "article-prix-immobilier.html",
+      "wp_post_id": null,
+      "url": "https://www.locationcourteduree.fr/2026/10/29/prix-immobilier/",
+      "note": "publié par Martin via l'extension Chrome (HTTPS du site bloqué pour le robot) ; article jumeau calculfraisdenotaire.net/capacite-emprunt/"
+    },
+    {
+      "id": "VKxhxpfDx7w",
+      "date_traitement": "2026-10-29",
+      "article": "article-regles-airbnb.html",
+      "wp_post_id": null,
+      "url": "https://www.locationcourteduree.fr/2026/10/29/regles-airbnb/",
+      "note": "transcription Gemini (yt-dlp bloqué) ; publié par Martin via l'extension Chrome"
     }
   ]
 }
