@@ -8,7 +8,7 @@ fb=os.path.join(tmp,'gem_body.json'); fo=os.path.join(tmp,'gem_out.json')
 body={"contents":[{"parts":[
  {"file_data":{"file_uri":"https://www.youtube.com/watch?v="+vid}},
  {"text":"Transcris intégralement et mot pour mot, en français, tout ce qui est dit dans cette vidéo, du début à la fin. Ne résume pas, ne reformule pas, n'ajoute aucun titre ni commentaire : donne uniquement le texte prononcé, en paragraphes."}]}],
- "generationConfig":{"temperature":0,"maxOutputTokens":30000}}
+ "generationConfig":{"temperature":0,"maxOutputTokens":30000,"mediaResolution":"MEDIA_RESOLUTION_LOW"}}
 open(fb,'w').write(json.dumps(body))
 if os.path.exists(fo): os.remove(fo)
 subprocess.run(["curl","-sS","--max-time","600","-o",fo,"-w","http=%{http_code}\n","-H","x-goog-api-key: "+os.environ["GEMINI_API_KEY"],"-H","Content-Type: application/json","--data-binary","@"+fb,

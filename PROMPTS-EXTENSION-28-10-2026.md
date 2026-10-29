@@ -79,3 +79,41 @@ Dans Articles, cherche « capacité d'emprunt ». Si un article sur ce sujet exi
 ÉTAPE 5 : CONTRÔLE PUIS PUBLICATION
 Prévisualise : titres numérotés (1., 1.1.), encadrés bleu et bleu nuit, aucun code HTML brut. Si tout est bon, Publier, puis donne-moi l'URL publique.
 ```
+
+---
+
+## BLOC C : locationcourteduree.fr, article « règles Airbnb » (vidéo VKxhxpfDx7w)
+
+```
+Tu vas publier un article sur le WordPress de locationcourteduree.fr (onglet wp-admin déjà connecté). Travaille une étape à la fois et vérifie chaque étape.
+
+RÈGLE D'OR pour chaque champ : (1) clique dans le champ, (2) Cmd+A, (3) Delete, (4) colle ou tape la valeur.
+
+ÉTAPE 0 : ANTI-DOUBLON
+Dans Articles, cherche « Règles Airbnb ». Si un article de ce titre existe déjà (brouillon ou publié), travaille DEDANS et ne crée pas de nouvel article. S'il est déjà publié avec son image, arrête-toi et dis-le-moi.
+
+ÉTAPE 1 : CRÉER L'ARTICLE ET COLLER LE HTML
+- Articles > Ajouter.
+- Titre : Règles Airbnb : fin des corvées de départ le 20 novembre
+- Ouvre dans un nouvel onglet : https://raw.githubusercontent.com/xSARRASx/blog/claude/robot-blog-lundi-4cya0g/article-regles-airbnb.html puis clique dans la page, Cmd+A, Cmd+C.
+- Dans l'éditeur WordPress : menu à trois points en haut à droite > « Éditeur de code », colle avec Cmd+V sous le titre, puis reviens à « Éditeur visuel ». (Si l'article s'ouvre dans Elementor : widget « HTML », pas « Mise en évidence du code ».)
+- ENREGISTRE EN BROUILLON. Ne publie pas encore.
+
+ÉTAPE 2 : RÉGLAGES
+- Slug (Permalien) : regles-airbnb
+- Catégories : coche « Location courte durée » et « Conciergerie ».
+- Extrait : Vaisselle, draps, poubelles : Airbnb interdit les corvées de départ le 20 novembre. Ce qui change, les sanctions et les 5 actions à mener.
+
+ÉTAPE 3 : IMAGE MISE EN AVANT
+- Image mise en avant > Téléverser, avec l'image de ce lien : https://raw.githubusercontent.com/xSARRASx/blog/claude/robot-blog-lundi-4cya0g/cover-regles-airbnb.png
+- Vérifie la vignette : une cuisine avec des assiettes, une valise orange et un agent de ménage qui arrive par la porte.
+- Texte alternatif : Règles Airbnb : le ménage de départ revient au prestataire
+
+ÉTAPE 4 : YOAST
+- Expression clé principale : règles airbnb
+- Titre SEO (vide d'abord les variables) : Règles Airbnb : fin des corvées de départ le 20 novembre
+- Méta description : Règles Airbnb du 20 novembre : vaisselle, draps, poubelles, ce qui change pour les hôtes, les sanctions et les 5 actions à mener.
+
+ÉTAPE 5 : CONTRÔLE PUIS PUBLICATION
+Prévisualise : titres orange, encadrés colorés, vidéo, FAQ, aucun code HTML brut à l'écran. Si tout est bon, clique sur Publier et donne-moi l'URL publique.
+```
