@@ -46,3 +46,11 @@ Les trois du 29/10 ont été publiés par Martin avec l'extension Claude pour Ch
 4. Image Gemini 16:9 sans texte (sinon miniature YouTube ou couverture SVG).
 5. Publication API (si le site répond) ou bloc extension Chrome (si bloqué).
 6. traite.json + historique des visuels dans CLAUDE.md, commit + push, message court à Martin (lien de l'image en premier).
+
+## Si la reprise se fait sur le Mac de Martin (conversation locale, pas dans le cloud)
+
+- **Gros avantage** : le Mac de Martin n'est pas bloqué par le pare-feu de l'hébergeur (il se connecte normalement à ses wp-admin), et YouTube bloque beaucoup moins une connexion de particulier. Le robot devrait donc pouvoir de nouveau publier directement par l'API, sans passer par l'extension Chrome.
+- **Récupérer le dépôt** : `git clone https://github.com/xSARRASx/blog.git ~/blog && cd ~/blog && git checkout claude/robot-blog-lundi-4cya0g`.
+- **Outils à vérifier sur le Mac** : `python3`, `curl`, `git`, `yt-dlp` (`python3 -m pip install -U yt-dlp` ou `brew install yt-dlp`), Node (`brew install node`). Les chemins Linux de CLAUDE.md ne valent pas sur Mac : remplacer `node:/opt/node22/bin/node` par `node:$(which node)`. Le script `.robot-blog/setup-ytdlp.sh` est fait pour le conteneur Linux : sur Mac, l'adapter ou s'en passer.
+- **Secrets** : le Mac n'a pas les variables `WP_APP_USER`, `WP_APP_PASSWORD` et `GEMINI_API_KEY`. Martin doit les ajouter lui-même dans son fichier `~/.zshrc` (lignes `export NOM="valeur"`), puis rouvrir le Terminal. **Il ne doit JAMAIS coller ces valeurs dans le chat.** Mot de passe d'application WordPress : wp-admin > Profil > Mots de passe d'application (en créer un nouveau si besoin). Clé Gemini : https://aistudio.google.com/apikey.
+- **Tâches programmées** : celles du lundi et du jeudi tournent dans la conversation cloud. Une tâche programmée sur le Mac ne se lance que si le Mac est allumé avec Claude ouvert. Ne déplacer les tâches qu'une fois la conversation Mac validée sur un premier article.
